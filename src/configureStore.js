@@ -12,6 +12,7 @@ const createBrowserHistory = require('history').createBrowserHistory;
 
 
 export const history = createBrowserHistory();
+//これをApp.jsに渡した
 
 
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -29,3 +30,4 @@ export default function configureStore(preloadedState) {
 
     return store;
 };
+//↑Redux dev toolsとconnectingしている
