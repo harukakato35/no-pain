@@ -12,8 +12,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import NavBar from './NavBar';
-
 
 function Copyright() {
   return (
@@ -48,12 +46,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SignIn() {
+const SignIn = (isLoginPending, isLoginSuccess, loginError) => {
   const classes = useStyles();
 
   return (
     <React.Fragment>
-    <NavBar/>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -116,8 +113,15 @@ export default function SignIn() {
       <Box mt={8}>
         <Copyright />
       </Box>
+      <div className="message">
+          { isLoginPending && <div>Please wait...</div> }
+          { isLoginSuccess && <div>Success.</div> }
+          { loginError && <div>{loginError.message}</div> }
+      </div>
     </Container>
     </React.Fragment>
   );
 }
+
+export default SignIn;
 
