@@ -23,6 +23,7 @@ function LogoutButton(props){
 
 export default function PatientLogin (props){
     const login = useSelector(state => state.login); //global stateを呼び出すため,Dev toolをみて決めてる
+    const logout = useSelector(state => state.logout);     
     const dispatch = useDispatch();　//Login.jsのreducerを使うため
     console.log(props);
     
@@ -44,6 +45,7 @@ export default function PatientLogin (props){
       return (<LoginButton onClick={hundleLoginClick} />);
     }
     };
+
     
   return (
     <div>
