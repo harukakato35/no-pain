@@ -8,9 +8,11 @@ import TherapistLogin from './TherapistLogin'
 import {Link} from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Myoage from './MyPage';
+import { useDispatch, useSelector } from 'react-redux';
 
 const NavBar = () => {
-
+    const login = useSelector(state => state.login);
 
     return (
     <AppBar color="primary" position="static">
@@ -36,6 +38,15 @@ const NavBar = () => {
                                 <TherapistLogin />
                        </TypoGraphy>
                         </ListItemText>
+                        {login.isLoginSuccess?
+                         <ListItemText inset>
+                            <TypoGraphy color="inherit" variant="title">
+                                <Link to="/mypage">Mypage</Link>
+                            </TypoGraphy>
+                            </ListItemText> 
+                            :
+                            <React.Fragment />
+                           }
                     </ListItem >
                 </List>              
 

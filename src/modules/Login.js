@@ -1,7 +1,7 @@
 const SET_LOGIN_PENDING = 'SET_LOGIN_PENDING';
 const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
 const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
-// const SET_LOGOUT_SUCCESS = 'SET_LOGOUT_SUCCESS';
+const SET_LOGOUT_SUCCESS = 'SET_LOGOUT_SUCCESS';
 
 const initialState = { 
   isLoginSuccess: false,
@@ -23,6 +23,13 @@ export default function reducer(state=initialState, action) {
         ...state, 
       　isLoginPending: false,
         isLoginSuccess: true
+      };
+      
+    case SET_LOGOUT_SUCCESS:
+      return { 
+        ...state, 
+        isLogoutSuccess: true,
+        isLoginSuccess: false
       };
       
     case SET_LOGIN_ERROR:

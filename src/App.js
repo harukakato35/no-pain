@@ -54,12 +54,12 @@ const App = () => {
             </Switch>
             <Switch>
               <Route exact path="/therapist/login" component={SignIn}/>
-            </Switch>  
-            <Switch>
-              <Route exact path="/therapist/Signup" component={SignUp}/>
-            </Switch>
+            </Switch> 
             <Switch>
               <Route exact path="/therapist/mypage" component={TherapistMyPage}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/therapist/Signup" component={SignUp}/>
             </Switch>
             <Switch>
               <Route exact path="/therapist/chat" component={TherapistChat}/>
