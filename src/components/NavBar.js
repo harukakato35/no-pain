@@ -8,7 +8,8 @@ import TherapistLogin from './TherapistLogin'
 import {Link} from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Myoage from './MyPage';
+// import Mypage from './MyPage';
+// import TherapistMypage from './TherapistMypage';
 import { useDispatch, useSelector } from 'react-redux';
 
 const NavBar = () => {
@@ -46,7 +47,8 @@ const NavBar = () => {
                             </ListItemText> 
                             :
                             <React.Fragment />
-                           }
+                           }                    
+
                     </ListItem >
                 </List>              
 

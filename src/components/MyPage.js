@@ -13,6 +13,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -32,13 +33,20 @@ function ButtonForAdvice(props){
   );
 }
 
+function ButtonForApp(props){
+  return (
+    <Button onClick={props.onClick} variant="contained" color="secondary">
+      Make an appt
+    </Button>
+  );
+}
 export default function MyPage(props) {
   const classes = useStyles();
     const mypage = useSelector(state => state.mypage); //global stateを呼び出すため,Dev toolをみて決めてる
     const dispatch = useDispatch();　//Login.jsのreducerを使うため
-    console.log(props);
-    const title = useSelector(state => state.inquiry.title);
-
+    const title = useSelector(state => state.title.inquiryTitle);
+    const answer = useSelector(state => state.inquiry.answer &&  state.inquiry.answer[0].content)
+    const appointment = useSelector(state => state.appointment);
     
     const  Advice = () => {
       dispatch({ type: "ASK_FOR_ADVICE" }); //dispatchを実行することでReducerが実行される
@@ -46,9 +54,11 @@ export default function MyPage(props) {
     };
     
 
-    const AdviceBtn = () => {
-      return (<ButtonForAdvice onClick={Advice}/>);
+    const  Appointment = () => {
+      dispatch({ type: "MAKE_APPOINTMENT" }); //dispatchを実行することでReducerが実行される
+      dispatch(push('/appointment'));
     };
+    
 
   return (
     <div className={classes.root}>
@@ -70,7 +80,7 @@ export default function MyPage(props) {
                             1
                           </TableCell>
                           <TableCell align="right">{title}</TableCell>
-                          <TableCell align="right"></TableCell>
+                          <TableCell align="right">{title}</TableCell>
                         </TableRow>
                     
                     </TableBody>
@@ -78,11 +88,35 @@ export default function MyPage(props) {
                 </TableContainer>
         </Grid>
       </Grid>
-      <AdviceBtn />
+      <Grid container spacing={3}>
+        <Grid item xs={7}>
+            <TableContainer component={Paper}>
+                  <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>回答内容</TableCell>
+                        <TableCell align="right">タイトル</TableCell>
+                        <TableCell align="right">回答日時</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+
+                        <TableRow>
+                          <TableCell component="th" scope="row">
+                            1
+                          </TableCell>
+                          <TableCell align="right">{answer}</TableCell>
+                          <TableCell align="right"></TableCell>
+                          <ButtonForApp  onClick={Appointment}/>
+                        </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+        </Grid>
+      </Grid>
+      <ButtonForAdvice onClick={Advice}/>
     </div>
   );
 }
 
 
-//    console.log(title);これは何？ ->デバック
-//    console.log(props); これも何？

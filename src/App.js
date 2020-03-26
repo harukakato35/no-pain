@@ -10,14 +10,18 @@ import Home from './components/Home';
 import MyPage from './components/MyPage';
 import Chat from './components/Chat';
 import Search from './components/Search';
+import SearchResult from './components/SearchResult';
 import Consultation from './components/Consultation';
 import ConsultationComplete from './components/ConsultationComplete';
 import TherapistChat from './components/TherapistChat';
 import Appointment from './components/Appointment';
+import ApptComplete from './components/ApptComplete';
 import TherapistApp from './components/TherapistApp';
 import Advice from './components/Advice';
 import TherapistMyPage from './components/TherapistMyPage';
-
+import QuestionList from './components/QuestionList';
+import QuestionDetail from './components/QuestionDetail';
+import AdviceComplete from './components/AdviceComplete';
 
 
 const App = () => {
@@ -50,13 +54,25 @@ const App = () => {
               <Route exact path="/appointment" component={Appointment}/>
             </Switch>
             <Switch>
+              <Route exact path="/appointment/complete" component={ApptComplete}/>
+            </Switch>
+            <Switch>
               <Route exact path="/search" component={Search}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/search/result" component={SearchResult}/>
             </Switch>
             <Switch>
               <Route exact path="/therapist/login" component={SignIn}/>
             </Switch> 
             <Switch>
               <Route exact path="/therapist/mypage" component={TherapistMyPage}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/questionlist" component={QuestionList}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/question/detail/:id" component={QuestionDetail}/>
             </Switch>
             <Switch>
               <Route exact path="/therapist/Signup" component={SignUp}/>
@@ -66,6 +82,9 @@ const App = () => {
             </Switch>
             <Switch>
               <Route exact path="/therapist/advice" component={Advice}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/therapist/advice/complete" component={AdviceComplete}/>
             </Switch>
             <Switch>
               <Route exact path="/therapist/appointment" component={TherapistApp}/>

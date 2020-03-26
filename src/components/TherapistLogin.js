@@ -21,27 +21,27 @@ function LogoutButtonForTherapist(props){
 }
 
 export default function TherapistLogin (props){
-    const login = useSelector(state => state.login); //global stateを呼び出すため,Dev toolをみて決めてる
-    const logout = useSelector(state => state.logout); 
+    const login = useSelector(state => state.therapistlogin); //global stateを呼び出すため,Dev toolをみて決めてる
+    const logout = useSelector(state => state.therapistlogout); 
     const dispatch = useDispatch();　//Login.jsのreducerを使うため
     console.log(props);
     
     const  hundleLoginClickT = () => {
-      dispatch({ type: "SET_LOGIN_SUCCESS" }); //dispatchを実行することでReducerが実行される
+      dispatch({ type: "SET_THERAPIST_LOGIN_SUCCESS" }); //dispatchを実行することでReducerが実行される
       dispatch(push('therapist/mypage'));
     };
     
    const  hundleLogoutClickT = () => {
-      dispatch({ type: "SET_LOGOUT_SUCCESS" });
+      dispatch({ type: "SET_THERAPIST_LOGOUT_SUCCESS" });
       dispatch(push('/logoutpage'));
     };
     
 
     const Btn = () => {
-    if(login.isLoginSuccess){
-      return (<LoginButtonForTherapist onClick={hundleLogoutClickT}/>);
+    if(login.isTherapistLoginSuccess){
+      return (<LogoutButtonForTherapist onClick={hundleLogoutClickT}/>);
     }else{
-      return (<LogoutButtonForTherapist onClick={hundleLoginClickT} />);
+      return (<LoginButtonForTherapist onClick={hundleLoginClickT} />);
     }
     };
     

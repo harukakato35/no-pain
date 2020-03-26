@@ -78,4 +78,6 @@ export default function Consultation(props) {
   }
 
 //<Button>のなかに<Link>を入れない!
-
+//e.preventDefault:prevent a browser reload/refresh
+//reactはstateを更新することで動いているからreload/refreshしなくて良い
+//addInquiryこれmodules/Consultation.jsになくない？？
