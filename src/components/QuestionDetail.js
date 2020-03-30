@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 export default function QuestionDetail() {
     const inquiry = useSelector(state => state.inquiry);
     const dispatch = useDispatch();
-    const login = useSelector(state => state.therapistlogin);
+    const login = useSelector(state => state.login);
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
 
@@ -41,10 +41,9 @@ export default function QuestionDetail() {
     }
     
     const listItems = inquiry.answer.map((answer)=>
-
-    <li key={answer.id}>
-      {answer.content}
-    </li>
+      <li key={answer.id}>
+        {answer.content}
+      </li>
     );
     
   return (
@@ -61,7 +60,7 @@ export default function QuestionDetail() {
     </Card>
     {listItems}
     
-    {login.isTherapistLoginSuccess?
+    {login.isLoginSuccess?
             <Grid item xs={12} sm={10}>
               <TextField
                 required

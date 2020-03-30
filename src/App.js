@@ -17,7 +17,6 @@ import TherapistChat from './components/TherapistChat';
 import Appointment from './components/Appointment';
 import ApptComplete from './components/ApptComplete';
 import TherapistApp from './components/TherapistApp';
-import Advice from './components/Advice';
 import TherapistMyPage from './components/TherapistMyPage';
 import QuestionList from './components/QuestionList';
 import QuestionDetail from './components/QuestionDetail';
@@ -81,7 +80,7 @@ const App = () => {
               <Route exact path="/therapist/chat" component={TherapistChat}/>
             </Switch>
             <Switch>
-              <Route exact path="/therapist/advice" component={Advice}/>
+              <Route exact path="/therapist/advice" component={QuestionDetail}/>
             </Switch>
             <Switch>
               <Route exact path="/therapist/advice/complete" component={AdviceComplete}/>

@@ -5,6 +5,7 @@ const SET_LOGOUT_SUCCESS = 'SET_LOGOUT_SUCCESS';
 
 const initialState = { 
   isLoginSuccess: false,
+  isPatient: null,
   isLoginPending: false,
   loginError: null
 }
@@ -22,13 +23,14 @@ export default function reducer(state=initialState, action) {
       return { 
         ...state, 
       　isLoginPending: false,
+      　isPatient: action.isPatient,
         isLoginSuccess: true
       };
       
     case SET_LOGOUT_SUCCESS:
       return { 
         ...state, 
-        isLogoutSuccess: true,
+        isPatient: null,
         isLoginSuccess: false
       };
       
@@ -50,3 +52,6 @@ export default function reducer(state=initialState, action) {
 //ファイルにまとめるもの。ちょっとの修正をそれぞれのファイルを開いてすることを
 //→省ける。
 //この記事は良い:https://medium.com/swlh/the-good-the-bad-of-react-redux-and-why-ducks-might-be-the-solution-1567d5bdc698
+//isPatient: null,:nullにするのは誤判別がへるのと、ログイン前だからこういう処理
+//ログインごはisPatient: true/falseでよい
+//引数であり、actionは何かが入ってくるってこと

@@ -8,7 +8,7 @@ import { push } from 'connected-react-router'
 function LoginButton(props){
   return (
     <Button onClick={props.onClick} variant="contained" color="secondary">
-      Login
+      Patient Login
     </Button>
   );
 }
@@ -23,12 +23,11 @@ function LogoutButton(props){
 
 export default function PatientLogin (props){
     const login = useSelector(state => state.login); //global stateを呼び出すため,Dev toolをみて決めてる
-    const logout = useSelector(state => state.logout);     
     const dispatch = useDispatch();　//Login.jsのreducerを使うため
     console.log(props);
     
     const  hundleLoginClick = () => {
-      dispatch({ type: "SET_LOGIN_SUCCESS" }); //dispatchを実行することでReducerが実行される
+      dispatch({ type: "SET_LOGIN_SUCCESS",isPatient:true }); //dispatchを実行することでReducerが実行される
       dispatch(push('/mypage'));
     };
     
@@ -40,7 +39,11 @@ export default function PatientLogin (props){
 
     const Btn = () => {
     if(login.isLoginSuccess){
+    　if(login.isPatient==true){
       return (<LogoutButton onClick={hundleLogoutClick}/>);
+    }else{
+      return (<React.Fragment/>)
+     }
     }else{
       return (<LoginButton onClick={hundleLoginClick} />);
     }
@@ -48,9 +51,7 @@ export default function PatientLogin (props){
 
     
   return (
-    <div>
       <Btn />
-    </div>
     );
 };
 
