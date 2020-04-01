@@ -29,11 +29,25 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
+function ButtonForChat(props){
+  return (
+    <Button onClick={props.onClick} variant="contained" color="secondary">
+      Chat with this Patient
+    </Button>
+  );
+}
 
 export default function TherapistMyPage(props) {
     const classes = useStyles();
     const title = useSelector(state => state.inquiry.title);
+    const dispatch = useDispatch();
     const appointment = useSelector(state => state.appointments.appointment);
+    
+    const  Message = () => {
+      dispatch({ type: "ADD_PATIENT_MESSAGE" }); //dispatchを実行することでReducerが実行される
+      dispatch(push('/chat'));
+    };
+
     const appointments = useSelector(state => state.appointments.appointments);
     const listItems = appointments.map((appointment)=>
 
@@ -58,7 +72,6 @@ export default function TherapistMyPage(props) {
                     <TableBody>
                         <TableRow>
                           <TableCell component="th" scope="row">
-                            1
                           </TableCell>
                           <TableCell align="right">{title}</TableCell>
                           <TableCell align="right"></TableCell>
@@ -93,7 +106,7 @@ export default function TherapistMyPage(props) {
                 </TableContainer>
        　 </Grid>
       </Grid>
-      
+      <ButtonForChat  onClick={Message}/>
       <Grid container spacing={3}>
         <Grid item xs={7}>
             <TableContainer component={Paper}>

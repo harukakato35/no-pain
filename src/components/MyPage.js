@@ -40,6 +40,14 @@ function ButtonForApp(props){
     </Button>
   );
 }
+
+function ButtonForChat(props){
+  return (
+    <Button onClick={props.onClick} variant="contained" color="secondary">
+      Chat with this Therapist
+    </Button>
+  );
+}
 export default function MyPage(props) {
   const classes = useStyles();
     const mypage = useSelector(state => state.mypage); //global stateを呼び出すため,Dev toolをみて決めてる
@@ -47,6 +55,7 @@ export default function MyPage(props) {
     const title = useSelector(state => state.title.inquiryTitle);
     const answer = useSelector(state => state.inquiry.answer &&  state.inquiry.answer[0].content)
     const appointment = useSelector(state => state.appointment);
+    const chat = useSelector(state => state.message);
     
     const  Advice = () => {
       dispatch({ type: "ASK_FOR_ADVICE" }); //dispatchを実行することでReducerが実行される
@@ -57,6 +66,11 @@ export default function MyPage(props) {
     const  Appointment = () => {
       dispatch({ type: "MAKE_APPOINTMENT" }); //dispatchを実行することでReducerが実行される
       dispatch(push('/appointment'));
+    };
+    
+    const  Message = () => {
+      dispatch({ type: "ADD_PATIENT_MESSAGE" }); //dispatchを実行することでReducerが実行される
+      dispatch(push('/chat'));
     };
     
 
@@ -108,6 +122,7 @@ export default function MyPage(props) {
                           <TableCell align="right">{answer}</TableCell>
                           <TableCell align="right"></TableCell>
                           <ButtonForApp  onClick={Appointment}/>
+                          <ButtonForChat  onClick={Message}/>
                         </TableRow>
                     </TableBody>
                   </Table>

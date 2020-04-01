@@ -7,8 +7,8 @@ import Consultation from './modules/Consultation';
 import QuestionDetail from './modules/QuestionDetail';
 import Appointment from './modules/Appointment';
 import Search from './modules/Search';
-
-
+import Message from './modules/Message';
+import Chat from './modules/Chat';
 
 export const rootReducer = history => combineReducers({
 
@@ -20,7 +20,9 @@ export const rootReducer = history => combineReducers({
     inquiry: QuestionDetail,
     title: Consultation,
     appointments: Appointment,
-    search: Search
+    search: Search,
+    chatP: Chat,
+    chatT:Message
 });
 
 //history:履歴管理に必要なもの
