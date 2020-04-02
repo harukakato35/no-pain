@@ -1,13 +1,11 @@
 const ADD_MESSAGE = "ADD_MESSAGE ";
 
-export function addMessage(messageContent) {
+export function addChat(messageContent) {
   return { type:ADD_MESSAGE, messageContent };
 }
 
 
 const initialState = {
-    id: 0,
-    content: "My back hurts recently",
     message:[
     {id:1, content:"How long has it been?"},
     {id:3, content:"Have you had any kind of treatment before?"}

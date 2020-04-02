@@ -26,25 +26,30 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  button: {
+    backgroundColor: '#FFAD90',
+    color:'white',
+  },
 }));
 
 
-function ButtonForChat(props){
-  return (
-    <Button onClick={props.onClick} variant="contained" color="secondary">
-      Chat with this Patient
-    </Button>
-  );
-}
+
 
 export default function TherapistMyPage(props) {
+    function ButtonForChat(props){
+      return (
+        <Button onClick={props.onClick} variant="contained" className={classes.button} >
+          Chat with this Patient
+        </Button>
+      );
+    }
     const classes = useStyles();
     const title = useSelector(state => state.inquiry.title);
     const dispatch = useDispatch();
     const appointment = useSelector(state => state.appointments.appointment);
     
     const  Message = () => {
-      dispatch({ type: "ADD_PATIENT_MESSAGE" }); //dispatchを実行することでReducerが実行される
+      dispatch({ type: "ADD_MESSAGE" }); //dispatchを実行することでReducerが実行される
       dispatch(push('/chat'));
     };
 
@@ -81,7 +86,7 @@ export default function TherapistMyPage(props) {
                 </TableContainer>
         </Grid>
       </Grid>
-      <Link to="/questionlist"><Button renderAs="button"variant="contained" color="secondary">Answer</Button></Link>
+      <Link to="/questionlist"><Button renderAs="button"variant="contained" className={classes.button}>Answer</Button></Link>
       <Grid container spacing={3}>
         <Grid item xs={7}>
             <TableContainer component={Paper}>
@@ -106,7 +111,7 @@ export default function TherapistMyPage(props) {
                 </TableContainer>
        　 </Grid>
       </Grid>
-      <ButtonForChat  onClick={Message}/>
+      <ButtonForChat onClick={Message}/>
       <Grid container spacing={3}>
         <Grid item xs={7}>
             <TableContainer component={Paper}>

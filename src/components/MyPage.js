@@ -23,19 +23,18 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  button: {
+    backgroundColor: '#FFAD90',
+    color:'white',
+  },
 }));
 
-function ButtonForAdvice(props){
-  return (
-    <Button onClick={props.onClick} variant="contained" color="secondary">
-      Ask for advice
-    </Button>
-  );
-}
 
+
+export default function MyPage(props) {
 function ButtonForApp(props){
   return (
-    <Button onClick={props.onClick} variant="contained" color="secondary">
+    <Button onClick={props.onClick} variant="contained" className={classes.button}>
       Make an appt
     </Button>
   );
@@ -43,13 +42,21 @@ function ButtonForApp(props){
 
 function ButtonForChat(props){
   return (
-    <Button onClick={props.onClick} variant="contained" color="secondary">
+    <Button onClick={props.onClick} variant="contained" className={classes.button}>
       Chat with this Therapist
     </Button>
   );
 }
-export default function MyPage(props) {
-  const classes = useStyles();
+
+function ButtonForAdvice(props){
+  return (
+    <Button onClick={props.onClick} variant="contained" className={classes.button}>
+      Ask for advice
+    </Button>
+  );
+}
+
+    const classes = useStyles();
     const mypage = useSelector(state => state.mypage); //global stateを呼び出すため,Dev toolをみて決めてる
     const dispatch = useDispatch();　//Login.jsのreducerを使うため
     const title = useSelector(state => state.title.inquiryTitle);
@@ -121,8 +128,8 @@ export default function MyPage(props) {
                           </TableCell>
                           <TableCell align="right">{answer}</TableCell>
                           <TableCell align="right"></TableCell>
-                          <ButtonForApp  onClick={Appointment}/>
-                          <ButtonForChat  onClick={Message}/>
+                          <ButtonForApp onClick={Appointment}/>
+                          <ButtonForChat onClick={Message}/>
                         </TableRow>
                     </TableBody>
                   </Table>

@@ -8,8 +8,7 @@ export function addMessage(messageContent) {
 
 const initialState = {
     messageContent:[
-    {id:2},
-    {id:4},
+    {id:0, content:"My back hurts recently"}
     ]
 };
 
@@ -21,17 +20,11 @@ export default function reducer(state=initialState, action) {
         case ADD_T_MESSAGE:
             return {
                 ...state, 
-                messageContent: action.messageContent
+                 messageContent:[...state.messageContent,{id:4, content:action.messageContent}]
             }
+            
             default: return state
     }
 }
 
-// action creators simply return an action:s
-// const initialState = {
-//     contents:[
-//     {id:0},
-//     {id:1},
-//     ]
-// };データベースからとって来たという仮定だからこういう書き方を
-//している
+

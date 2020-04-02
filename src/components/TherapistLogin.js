@@ -6,7 +6,7 @@ import { push } from 'connected-react-router'
 
 function LoginButtonForTherapist(props){
   return (
-    <Button onClick={props.onClick} variant="contained" color="secondary">
+    <Button onClick={props.onClick}>
      Therapist Login
     </Button>
   );
@@ -14,7 +14,7 @@ function LoginButtonForTherapist(props){
 
 function LogoutButtonForTherapist(props){
   return (
-    <Button onClick={props.onClick} variant="contained" color="secondary">
+    <Button onClick={props.onClick}>
       Logout
     </Button>
   );
