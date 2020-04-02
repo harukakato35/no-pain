@@ -39,7 +39,7 @@ const NavBar = () => {
                         <ListItemText inset>
                             <TypoGraphy variant="title">
                                  <Link to="/"　className={classes.typography}>Home</Link>
-                       </TypoGraphy>
+                            </TypoGraphy>
                         </ListItemText>
         
         
@@ -52,7 +52,7 @@ const NavBar = () => {
                         <ListItemText inset>
                             <TypoGraphy variant="title">
                                 <TherapistLogin />
-                       </TypoGraphy>
+                            </TypoGraphy>
                         </ListItemText>
                         {login.isLoginSuccess?
                          <ListItemText inset>

@@ -9,6 +9,8 @@ import ph from './picture/ph.png';
 import knee from './picture/knee.jpeg';
 import shoulder from './picture/shoulder.png';
 import back from './picture/back.png';
+import Box from '@material-ui/core/Box';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,6 +23,17 @@ const useStyles = makeStyles(theme => ({
     left: 130,
     backgroundImage: `url(${ph})`,
     cover: 'no-repeat',
+  },
+  imagep: {
+  position: 'absolute',
+  top: 99,
+  right: 0,
+  margin: 0,
+  color: 'white',
+  background: '#A9A9A9',
+  fontSize: 32,
+  lineHeight: 1,
+  padding: 5,
   },
   paper: {
     padding: theme.spacing(2),
@@ -69,6 +82,37 @@ const useStyles = makeStyles(theme => ({
     height: 265,
     backgroundImage: `url(${shoulder})`,
   },
+  box: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    position: 'absolute',
+    top: 1000,
+    width: 400,
+    height: 265,
+  },
+  boxp1: {
+    textAlign: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 50,
+    fontSize: 20,
+  },
+  boxp2: {
+    textAlign: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 600,
+    fontSize: 20,
+    whiteSpace: 'nowrap',
+  },
+  boxp3: {
+    textAlign: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 1100,
+    fontSize: 20,
+    whiteSpace: 'nowrap',
+  },
 }));
 
 export default function Home() {
@@ -83,6 +127,10 @@ export default function Home() {
             <ButtonBase className={classes.image} >
               <img className={classes.image}/>
             </ButtonBase>
+             <p className={classes.imagep}>
+                Having trouble finding the best treatment for your pain?<br></br>
+                We're here to help you.
+              </p>
           </Grid>
         </Grid>
       </Paper>
@@ -99,6 +147,17 @@ export default function Home() {
           <Grid item xs={4}>
             <Paper className={classes.paper5}></Paper>
           </Grid> 
+          <Box component="span" m={1} className={classes.box}>
+            <p className={classes.boxp1}>
+              Knee problems
+            </p>
+            <p className={classes.boxp2}>
+              Back problems
+            </p>
+            <p className={classes.boxp3}>
+              Shoulder problems
+            </p>
+         </Box>
       </Grid> 
 
     </div>
