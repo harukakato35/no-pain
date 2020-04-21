@@ -16,7 +16,6 @@ import { Scheduler, DayView, Appointments } from '@devexpress/dx-react-scheduler
 import { BrowserRouter as Router,Switch, Route} from 'react-router-dom';
 
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -33,8 +32,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-
-
 export default function TherapistMyPage(props) {
     function ButtonForChat(props){
       return (
@@ -44,9 +41,10 @@ export default function TherapistMyPage(props) {
       );
     }
     const classes = useStyles();
-    const title = useSelector(state => state.inquiry.title);
+    const title = useSelector(state => state.title.inquiryTitles);
     const dispatch = useDispatch();
     const appointment = useSelector(state => state.appointments.appointment);
+    const review = useSelector(state => state.review.review);
     
     const  Message = () => {
       dispatch({ type: "ADD_MESSAGE" }); //dispatchを実行することでReducerが実行される
@@ -78,13 +76,25 @@ export default function TherapistMyPage(props) {
                         <TableRow>
                           <TableCell component="th" scope="row">
                           </TableCell>
-                          <TableCell align="right">{title}</TableCell>
+                          <TableCell align="right"></TableCell>
                           <TableCell align="right"></TableCell>
                         </TableRow>
                     </TableBody>
                   </Table>
                 </TableContainer>
         </Grid>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}>
+               <Link to="/therapist/myprofile">
+                  Edit/Show your profile
+              </Link>
+            </Paper>
+            <Paper className={classes.paper}>
+               <Link to="/therapist/profile">
+                 Add your profile
+              </Link>
+            </Paper>            
+          </Grid>
       </Grid>
       <Link to="/questionlist"><Button renderAs="button"variant="contained" className={classes.button}>Answer</Button></Link>
       <Grid container spacing={3}>
@@ -135,6 +145,28 @@ export default function TherapistMyPage(props) {
                   </Table>
                 </TableContainer>
           </Grid>
+        <Grid item xs={7}>
+            <TableContainer component={Paper}>
+                  <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Your reviews</TableCell>
+                        <TableCell align="right"></TableCell>
+                        <TableCell align="right">予約日時</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        <TableRow>
+                          <TableCell component="th" scope="row">
+                            1
+                          </TableCell>
+                          <TableCell align="right"></TableCell>
+                          <TableCell align="right">{review}</TableCell>
+                        </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+                </Grid>
         </Grid>
     </div>
   );

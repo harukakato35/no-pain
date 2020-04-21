@@ -21,7 +21,18 @@ import TherapistMyPage from './components/TherapistMyPage';
 import QuestionList from './components/QuestionList';
 import QuestionDetail from './components/QuestionDetail';
 import AdviceComplete from './components/AdviceComplete';
-
+import TherapistProfile from './components/TherapistProfile';
+import TherapistMyprofile from './components/TherapistMyprofile';
+import ProfileComplete from './components/ProfileComplete';
+import Review from './components/Review';
+import ReviewComplete from './components/ReviewComplete';
+import KneeDoctors from './components/KneeDoctors';
+import BackDoctors from './components/BackDoctors';
+import ShoulderDoctors from './components/ShoulderDoctors';
+import TherapistDetail from './components/TherapistDetail';
+import EditMyProfile from './components/EditMyProfile';
+import EditComplete from './components/EditComplete';
+import NoResult from './components/NoResult';
 
 const App = () => {
     return (
@@ -56,10 +67,28 @@ const App = () => {
               <Route exact path="/appointment/complete" component={ApptComplete}/>
             </Switch>
             <Switch>
+              <Route exact path="/review" component={Review}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/kneedoctors" component={KneeDoctors}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/backdoctors" component={BackDoctors}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/shoulderdoctors" component={ShoulderDoctors}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/review/complete" component={ReviewComplete}/>
+            </Switch>
+            <Switch>
               <Route exact path="/search" component={Search}/>
             </Switch>
             <Switch>
               <Route exact path="/search/result" component={SearchResult}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/no/result" component={NoResult}/>
             </Switch>
             <Switch>
               <Route exact path="/therapist/login" component={SignIn}/>
@@ -74,7 +103,25 @@ const App = () => {
               <Route exact path="/question/detail/:id" component={QuestionDetail}/>
             </Switch>
             <Switch>
+              <Route exact path="/therapist/detail/:id" component={TherapistDetail}/>
+            </Switch>
+            <Switch>
               <Route exact path="/therapist/Signup" component={SignUp}/>
+            </Switch>
+             <Switch>
+              <Route exact path="/therapist/profile" component={TherapistProfile}/>
+            </Switch>    
+             <Switch>
+              <Route exact path="/therapist/myprofile" component={TherapistMyprofile}/>
+            </Switch>  
+             <Switch>
+              <Route exact path="/edit/profile" component={EditMyProfile}/>
+            </Switch>  
+             <Switch>
+              <Route exact path="/edit/complete" component={EditComplete}/>
+            </Switch> 
+             <Switch>
+              <Route exact path="/profile/complete" component={ProfileComplete}/>
             </Switch>
             <Switch>
               <Route exact path="/therapist/chat" component={TherapistChat}/>

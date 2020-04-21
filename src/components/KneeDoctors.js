@@ -23,28 +23,21 @@ const useStyles = makeStyles({
 });
 
 export default function SearchResult(){
+
+  const classes = useStyles();
+
+  const profile = useSelector(state => state.profile.profile);
   
-  const search = useSelector(state => state.search.search);
-  const inquiry =  useSelector(state => state.inquiry.inquiry);
   return (
-      search.map((search)=>(
-      <Link to={`/question/detail/${search.id}`}>
-        {search.title}
+  
+      profile.map((profile)=>(
+      
+      <Link to={`/therapist/detail/${profile.id}`}>
+        {profile.name}
       </Link> 
-      ))
-   );
+        ))
+  );
+ 
 }
 
-// export default function SearchResult(){
-//     const inquiries =  useSelector(state => state.inquiry);
-//     const result = inquiries.filter( function(value){
-//       return value === 'back';
-//     })
-
-
-//   return(
-//     <div>
-//       {result}
-//     </div>
-//   );
-// }
+//ここは今表示されてる

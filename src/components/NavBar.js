@@ -54,7 +54,7 @@ const NavBar = () => {
                                 <TherapistLogin />
                             </TypoGraphy>
                         </ListItemText>
-                        {login.isLoginSuccess?
+                        {login.isPatient==true?
                          <ListItemText inset>
                             <TypoGraphy color="inherit" variant="title">
                                 <Link to="/mypage" 　className={classes.mypage}>Mypage</Link>
@@ -63,7 +63,6 @@ const NavBar = () => {
                             :
                             <React.Fragment />
                            }                    
-
                     </ListItem >
                 </List>              
 

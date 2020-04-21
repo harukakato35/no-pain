@@ -7,8 +7,8 @@ export function addChat(messageContent) {
 
 const initialState = {
     message:[
-    {id:1, content:"How long has it been?"},
-    {id:3, content:"Have you had any kind of treatment before?"}
+    {id:1, content:"My back hurts recently",isPatient:true},
+    {id:3, content:"Have you had any kind of treatment before?",isPatient:false}
     ]
 };
 

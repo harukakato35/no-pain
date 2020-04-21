@@ -34,7 +34,7 @@ export default function QuestionDetail() {
     const login = useSelector(state => state.login);
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
-
+  
     const handleAdd = (e) => {
         e.preventDefault();
         dispatch(addAnswer(document.getElementById("Answer").value));
@@ -46,15 +46,20 @@ export default function QuestionDetail() {
       </li>
     );
     
+    const listItems2 = inquiry.inquiry.map((inquiry)=>
+      <li key={inquiry.id}>
+        {inquiry.title}
+      </li>
+    ); 
   return (
     <React.Fragment >
     <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-         {inquiry.title}
+         
         </Typography>
         <Typography variant="body2" component="p">
-          {inquiry.inquiry}
+     {listItems2}
         </Typography>
       </CardContent>
     </Card>

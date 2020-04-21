@@ -56,13 +56,21 @@ function ButtonForAdvice(props){
   );
 }
 
+function ButtonForReview(props){
+  return (
+    <Button onClick={props.onClick} variant="contained" className={classes.button}>
+      Review this therapist
+    </Button>
+  );
+}
     const classes = useStyles();
     const mypage = useSelector(state => state.mypage); //global stateを呼び出すため,Dev toolをみて決めてる
     const dispatch = useDispatch();　//Login.jsのreducerを使うため
     const title = useSelector(state => state.title.inquiryTitle);
     const answer = useSelector(state => state.inquiry.answer &&  state.inquiry.answer[0].content)
-    const appointment = useSelector(state => state.appointment);
+    const appointment = useSelector(state => state.appointments.appointment);
     const chat = useSelector(state => state.message);
+
     
     const  Advice = () => {
       dispatch({ type: "ASK_FOR_ADVICE" }); //dispatchを実行することでReducerが実行される
@@ -78,6 +86,11 @@ function ButtonForAdvice(props){
     const  Message = () => {
       dispatch({ type: "ADD_PATIENT_MESSAGE" }); //dispatchを実行することでReducerが実行される
       dispatch(push('/chat'));
+    };
+    
+    const  Review = () => {
+      dispatch({ type: "WRITE_A_REVIEW" }); //dispatchを実行することでReducerが実行される
+      dispatch(push('/review'));
     };
     
 
@@ -107,6 +120,7 @@ function ButtonForAdvice(props){
                     </TableBody>
                   </Table>
                 </TableContainer>
+              <ButtonForAdvice onClick={Advice}/>
         </Grid>
       </Grid>
       <Grid container spacing={3}>
@@ -135,8 +149,32 @@ function ButtonForAdvice(props){
                   </Table>
                 </TableContainer>
         </Grid>
+        <Grid item xs={7}>
+            <TableContainer component={Paper}>
+                  <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Your appointment</TableCell>
+                        <TableCell align="right">タイトル</TableCell>
+                        <TableCell align="right">相談日時</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+
+                        <TableRow>
+                          <TableCell component="th" scope="row">
+                            1
+                          </TableCell>
+                          <TableCell align="right">{appointment}</TableCell>
+                          <TableCell align="right"></TableCell>
+                        </TableRow>
+                    
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+            <ButtonForReview onClick={Review}/>
+        </Grid>
       </Grid>
-      <ButtonForAdvice onClick={Advice}/>
     </div>
   );
 }

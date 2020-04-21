@@ -9,6 +9,9 @@ import Appointment from './modules/Appointment';
 import Search from './modules/Search';
 import Message from './modules/Message';
 import Chat from './modules/Chat';
+import TherapistProfile from './modules/TherapistProfile';
+import TherapistMyprofile from './modules/TherapistMyprofile';
+import Review from './modules/Review';
 
 export const rootReducer = history => combineReducers({
 
@@ -21,8 +24,10 @@ export const rootReducer = history => combineReducers({
     title: Consultation,
     appointments: Appointment,
     search: Search,
-    chatP: Chat,
-    chatT:Message
+    chat:Message,
+    profile: TherapistProfile,
+    myprofile:TherapistMyprofile,
+    review:Review,
 });
 
 //history:履歴管理に必要なもの

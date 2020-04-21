@@ -25,24 +25,22 @@ const useStyles = makeStyles({
       title: {
         fontSize: 14,
       },
-      pos: {
+      post: {
         marginBottom: 12,
       },
+      style1:{
+       float: "left" 
+      },
+      style2:{
+       float: "right" 
+      }
 });
 
 
 
-const style1 = {
-    float: "left"
-};
-
-const style2 = {
-    float: "right"
-};
 
 export default function QuestionDetail(props) {
-    const chatP = useSelector(state => state.chatP);
-    const chatT = useSelector(state => state.chatT);
+    const chat = useSelector(state => state.chat);
     const dispatch = useDispatch();
     const login = useSelector(state => state.login);
     const classes = useStyles();
@@ -59,45 +57,23 @@ export default function QuestionDetail(props) {
         dispatch(addMessage(document.getElementById("Chat").value));
     };
     
-    const listItems = chatT.message.map((message)=>{
-    if(login.isLoginSuccess){
-    　if(login.isPatient==true){
-        if(message.id % 2 === 0) {
-          return(
-              <li key={message.id} style={style1}>
+    const ListItems =() =>{
+      return(
+        login.isLoginSuccess?
+        chat.message.map((message)=>(
+        message.isPatient == login.isPatient?
+              <li key={message.id} className={classes.style1}>
                 {message.content}
-              </li>);
-        } else {
-          return(
-              <li key={message.id} style={style2}>
+              </li>:     
+              <li key={message.id} className={classes.style2}>
                 {message.content}
-              </li>);
-                 }
-              }
-            }
-         }
+              </li>
+        )):
+        <React.Fragment />
       );
-
-    const listItems1 = chatT.message.map((message)=>{
-    if(login.isLoginSuccess){
-    　if(login.isPatient==false){
-        if(message.id % 2 === 0) {
-          return(
-              <li key={message.id} style={style2}>
-                {message.content}
-              </li>);
-        } else {
-          return(
-              <li key={message.id} style={style1}>
-                {message.content}
-              </li>);
-                 }
-               }
-             }
-           }
-        );   
+     }
     
-    const messageA = () =>{
+    const MessageA = () =>{
             if(login.isLoginSuccess){
             　if(login.isPatient==true){
                 return(
@@ -120,7 +96,7 @@ export default function QuestionDetail(props) {
                       </Button>
                       </Grid>
                       </div>
-);
+      );
                  } else {
         return(
             <div>
@@ -143,9 +119,9 @@ export default function QuestionDetail(props) {
                       </Grid>
                         </div>
                       );
-
                        }
                  }
+                 
           };
 
 return(
@@ -153,16 +129,50 @@ return(
                 <Card className={classes.root}>
                   <CardContent>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
-            
                     </Typography>
                     <Typography variant="body2" component="p">
                     </Typography>
                   </CardContent>
-                    
                 </Card>
-                  {messageA}
-                    {listItems}
-                    {listItems1}
+                 {login.isLoginSuccess==null || login.isPatient==null?
+                   <React.Fragment/>:<MessageA />}
+                  {chat.message==null?
+                    <React.Fragment />:
+                    <ListItems/>
+                    }
             </React.Fragment>
     );
 }
+// alert('aaa'):検証したいときに使う
+//const listItems = chatT.message.map((message)=>{
+    // if(login.isLoginSuccess){
+    // 　if(login.isPatient==true){
+    //     if(message.id % 2 === 0) {
+    //       return(
+    //           <li key={props.message.id} className={classes.style1}>
+    //             {props.message.content}
+    //           </li>            
+    //         );
+    //     } else {
+    //       return(
+    //           <li key={props.message.id} className={classes.style2}>
+    //             {props.message.content}
+    //           </li>            
+    //         );
+    //             }
+    //           }else{
+    //   if(message.id % 2 === 0) {
+    //       return(
+    //           <li key={message.id} className={classes.style2}>
+    //             {message.content}
+    //           </li>);
+    //     } else {
+    //       return(
+    //           <li key={message.id} className={classes.style1}>
+    //             {message.content}
+    //           </li>);
+    //             }                
+    //           }
+    //         }
+    //     }
+    //   );

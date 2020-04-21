@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import React, { useState, Component } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addInquiry } from '../modules/Consultation';
+import { writeReview } from '../modules/Review';
 import { push } from 'connected-react-router'
 
 
@@ -20,43 +20,29 @@ export default function Consultation(props) {
    
     const handleAdd = (e) => {
         e.preventDefault();
-        dispatch(addInquiry(document.getElementById("Title").value,document.getElementById("Inquiry").value));
-        dispatch(push('/consultation/complete'));
+        dispatch(writeReview(document.getElementById("Review").value));
+        dispatch(push('/review/complete'));
     }
     
    return (
       <form>
         <React.Fragment>
           <Typography variant="h6" gutterBottom>
-            Whad do you want to ask?
+            Write a review for this therapist
           </Typography>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                id="Title"
-                name="Title"
-                label="Title"
-                
-                fullWidth
-                autoComplete="fname"
-              />
-            </Grid>
             <Grid item xs={12} sm={10}>
               <TextField
                 required
-                id="Inquiry"
-                name="Inquiry"
-                label="Inquiry"
+                id="Review"
+                name="Review"
+                label="Review"
 
                 fullWidth
                 autoComplete="lname"
                 multiline
                 rows="4"
                 variant="outlined"
-                
               />
-            </Grid>
           </Grid>
           <Button variant="contained" onClick= {handleAdd} color="primary">
             Next

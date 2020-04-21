@@ -10,6 +10,10 @@ import knee from './picture/knee.jpeg';
 import shoulder from './picture/shoulder.png';
 import back from './picture/back.png';
 import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import {Link} from 'react-router-dom';
 
 
 const useStyles = makeStyles(theme => ({
@@ -51,8 +55,6 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     textAlign: 'left',
     backgroundColor:'#FFEEFF',
-    position: 'absolute',
-    top: 620,
     width: 800
   },
   paper3: {
@@ -72,6 +74,7 @@ const useStyles = makeStyles(theme => ({
     width: 400,
     height: 265,
     backgroundImage: `url(${back})`,
+    cover: 'no-repeat'
   },
   paper5: {
     padding: theme.spacing(2),
@@ -113,6 +116,25 @@ const useStyles = makeStyles(theme => ({
     fontSize: 20,
     whiteSpace: 'nowrap',
   },
+  boxp3: {
+    textAlign: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 1100,
+    fontSize: 20,
+    whiteSpace: 'nowrap',
+  },
+  search: {
+    backgroundColor: '#9370DB',
+    color:'white',
+  },
+ media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  card: {
+    height: 325,
+  },
 }));
 
 export default function Home() {
@@ -124,43 +146,78 @@ export default function Home() {
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item>
-            <ButtonBase className={classes.image} >
-              <img className={classes.image}/>
-            </ButtonBase>
-             <p className={classes.imagep}>
-                Having trouble finding the best treatment for your pain?<br></br>
-                We're here to help you.
-              </p>
+                <img className={classes.image}/>
+                <p className={classes.imagep}>
+                  Having trouble finding the best treatment for your pain?<br></br>
+                  We're here to help you.
+                </p>
           </Grid>
         </Grid>
       </Paper>
-      <Grid item xs={8}>
+      <Grid container spacing={3}>
+      <Grid item xs={10}>
         <Paper className={classes.paper2}>Find a therapist for your pain</Paper>
       </Grid>
-      <Grid container spacing={3}>
           <Grid item xs={4}>
-            <Paper className={classes.paper3}></Paper>
-          </Grid>
-          <Grid item xs={4}>
-            <Paper className={classes.paper4}></Paper>
-          </Grid> 
-          <Grid item xs={4}>
-            <Paper className={classes.paper5}></Paper>
-          </Grid> 
-          <Box component="span" m={1} className={classes.box}>
-            <p className={classes.boxp1}>
-              Knee problems
-            </p>
-            <p className={classes.boxp2}>
-              Back problems
-            </p>
-            <p className={classes.boxp3}>
-              Shoulder problems
-            </p>
-         </Box>
-      </Grid> 
+             <Card className={classes.card}>
+              <Link to="/kneedoctors">
+                <CardHeader
+                  title="Knee problems"
+                />
+                <CardMedia
+                  className={classes.media}
+                  image={knee}
+                  title="Paella dish"
+                />
+                </Link>
+              </Card>
+            </Grid>
 
+          <Grid item xs={4}>
+             <Card className={classes.card}>
+               <Link to="/backdoctors">
+                <CardHeader
+                  title="Back problems"
+                />
+                <CardMedia
+                  className={classes.media}
+                  image={back}
+                />
+                </Link>
+              </Card>
+            </Grid> 
+            <Grid item xs={4}>
+             <Card className={classes.card}>
+              <Link to="/shoulderdoctors">
+                <CardHeader
+                  title="Shoulder problems"
+                />
+                <CardMedia
+                  className={classes.media}
+                  image={shoulder}
+                />
+               </Link>
+              </Card>
+            </Grid> 
+            <Grid item xs={10}>
+              <Paper className={classes.paper2}>Find a similar symptoms with other people!</Paper>
+            </Grid>
+             <Grid item xs={12}>
+              <Search className={classes.search}/>
+            </Grid> 
+      </Grid> 
     </div>
  </React.Fragment>
   );
 }
+
+  // paper3: {
+  //   padding: theme.spacing(2),
+  //   textAlign: 'center',
+  //   position: 'absolute',
+  //   top: 680,
+  //   width: 400,
+  //   height: 265,
+  //   backgroundImage: `url(${knee})`,
+  // }, absoluteとか使うと浮かせてることになる
+  
