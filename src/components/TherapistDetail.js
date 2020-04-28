@@ -28,6 +28,9 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  link: {
+    textDecoration: 'none',
+  }
 });
 
 export default function QuestionDetail() {
@@ -57,7 +60,7 @@ export default function QuestionDetail() {
                   {therapist.Location}
                 </Typography>  
               </CardContent>
-              <Link to="/login"><Button renderAs="button"variant="contained" className={classes.button}>Sign in and make an appt</Button></Link>
+              <Link to="/login" className={classes.link}><Button renderAs="button"variant="contained" className={classes.button}>Sign in and make an appt</Button></Link>
             </Card>
         </React.Fragment>
         ))

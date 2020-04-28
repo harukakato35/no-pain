@@ -29,6 +29,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#FFAD90',
     color:'white',
   },
+  link: {
+    textDecoration: 'none',
+  }
 }));
 
 
@@ -77,7 +80,7 @@ export default function TherapistMyPage(props) {
       <Grid container spacing={3}>
       <Grid container item xs={9} spacing={1}>
       <Grid item xs={12}>
-      <Link to="/questionlist"><Button renderAs="button"variant="contained" className={classes.button}>Answer to patients' questions</Button></Link>
+      <Link to="/questionlist" className={classes.link}><Button renderAs="button"variant="contained" className={classes.button}>Answer to patients' questions</Button></Link>
       </Grid>
         <Grid item xs={12}>
             <TableContainer component={Paper}>

@@ -49,8 +49,6 @@ export default function QuestionDetail() {
     );
     
 
-
- 
   return (
     <React.Fragment>
       {patient.map((patient)=>(

@@ -21,10 +21,12 @@ const useStyles = makeStyles(theme => ({
   typography: {
     color:'	#0000EE',
     fontSize: 20,
+    textDecoration: 'none',
   },
   mypage: {
     color:'	#0000EE',
     fontSize: 17,
+    textDecoration: 'none',
   },
 }));
 
@@ -62,7 +64,16 @@ const NavBar = () => {
                             </ListItemText> 
                             :
                             <React.Fragment />
-                           }                    
+                           }  
+                        {login.isPatient==false?
+                         <ListItemText inset>
+                            <TypoGraphy color="inherit" variant="title">
+                                <Link to="/therapist/mypage" 　className={classes.mypage}>Mypage</Link>
+                            </TypoGraphy>
+                            </ListItemText> 
+                            :
+                            <React.Fragment />
+                           }   
                     </ListItem >
                 </List>              
 

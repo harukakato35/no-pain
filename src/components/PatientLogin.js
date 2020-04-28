@@ -66,4 +66,6 @@ export default function PatientLogin (props){
 //propsがないと<LogoutButton onClick={hundleLogoutClick}/>ここで使おうとしても
 //上のfunctionで定義されているものが使えない。
 //dispatch(push('/mypage')); これはglobal state使ってるか:画面遷移がこれでできてる
+//dispatch({ type: "SET_LOGIN_SUCCESS",isPatient:true }); <-isPatient:true　とすることで一つのreducerで済む
+
 

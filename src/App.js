@@ -13,10 +13,8 @@ import Search from './components/Search';
 import SearchResult from './components/SearchResult';
 import Consultation from './components/Consultation';
 import ConsultationComplete from './components/ConsultationComplete';
-import TherapistChat from './components/TherapistChat';
 import Appointment from './components/Appointment';
 import ApptComplete from './components/ApptComplete';
-import TherapistApp from './components/TherapistApp';
 import TherapistMyPage from './components/TherapistMyPage';
 import QuestionList from './components/QuestionList';
 import QuestionDetail from './components/QuestionDetail';
@@ -124,16 +122,10 @@ const App = () => {
               <Route exact path="/profile/complete" component={ProfileComplete}/>
             </Switch>
             <Switch>
-              <Route exact path="/therapist/chat" component={TherapistChat}/>
-            </Switch>
-            <Switch>
               <Route exact path="/therapist/advice" component={QuestionDetail}/>
             </Switch>
             <Switch>
               <Route exact path="/therapist/advice/complete" component={AdviceComplete}/>
-            </Switch>
-            <Switch>
-              <Route exact path="/therapist/appointment" component={TherapistApp}/>
             </Switch>
             <Switch>
               <Route exact path="/" component={Home}/>

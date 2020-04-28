@@ -58,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  link:{
+  textDecoration: 'none',
+  }
 }));
 
 export default function CenteredGrid() {
@@ -73,7 +76,6 @@ export default function CenteredGrid() {
  
   const printValues = e => {
     e.preventDefault();
-    console.log(form.username, form.password);
   };
 
   const updateField = e => {
@@ -133,7 +135,9 @@ export default function CenteredGrid() {
         />
       </label>
       <br />
-    <Link to="/edit/complete"><Button renderAs="button"variant="contained" className={classes.button}>Edit</Button></Link>
+    <Link to="/edit/complete" className={classes.link}><Button renderAs="button"variant="contained" className={classes.button}>Edit</Button></Link>
     </form>
   );
 }
+
+//localで管理してるからあくまで値は変わらない。editできるように見せてるだけ

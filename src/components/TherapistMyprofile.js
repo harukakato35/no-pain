@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#FFAD90',
     color:'white',
   },
+  link:{
+    textDecoration: 'none',
+  }
 }));
 
 
@@ -57,7 +60,7 @@ const useStyles = makeStyles(theme => ({
                     </TableBody>
                   </Table>
                 </TableContainer>
-                <Link to="/edit/profile"><Button renderAs="button"variant="contained" className={classes.button}>Edit</Button></Link>
+                <Link to="/edit/profile" className={classes.link}><Button renderAs="button"variant="contained" className={classes.button}>Edit</Button></Link>
         </Grid>
         </Grid>
 

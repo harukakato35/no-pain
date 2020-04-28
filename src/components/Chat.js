@@ -31,11 +31,29 @@ export default function QuestionDetail(props) {
         marginBottom: 12,
       },
       style1:{
-       float: "left" 
+       float: "left",
+        bottom: 0,
+        listStyle:'none',
+        width: '40%',
+        border: '0.5px solid black',
+        borderRadius: '10px',
+        margin: '5px',
+        backgroundColor: "#D0B0FF",
+        padding: '10px',
+        display: 'inline-block'
       },
       style2:{
-       float: "right" 
-      }
+       float: "right",
+        bottom: 0,
+        width: '40%',
+        listStyle:'none',
+        backgroundColor: "#FFBEDA",
+        border: '0.5px solid black',
+        borderRadius: '10px',
+        margin: '5px',
+        padding: '10px',
+
+    },
 });
     const chat = useSelector(state => state.chat);
     const dispatch = useDispatch();
@@ -131,10 +149,10 @@ return(
                     </Typography>
                   </CardContent>
                 </Card>
-                 {login.isLoginSuccess==null || login.isPatient==null?
-                   <React.Fragment/>:<Message />}
                   {chat.message==null?
                     <React.Fragment />:<ListItems/>}
+                 {login.isLoginSuccess==null || login.isPatient==null?
+                   <React.Fragment/>:<Message />} 
             </React.Fragment>
     );
 }
@@ -145,4 +163,5 @@ return(
 //               <li key={message.id} className={classes.style1}>
 //                 {message.content}
 //               </li>: <-これはelseという意味
-//chatのmessageに値が入ってなければ何も表示させない
+//                  {chat.message==null?
+//                    <React.Fragment />:<ListItems/>} <- messageがなければただリストを表示する
