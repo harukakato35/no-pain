@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import React, { useState, Component } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addInquiry } from '../modules/Consultation';
+import { addInquiry } from '../modules/QuestionDetail';
 import { push } from 'connected-react-router'
 
 

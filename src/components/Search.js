@@ -27,20 +27,19 @@ export default function Search() {
     const dispatch = useDispatch();
     const search = useSelector(state => state.search.search);
  　 const inquiry =  useSelector(state => state.inquiry.inquiry);
+
    
 const handleAdd = (e,inquiry) => {
  　  e.preventDefault();
-    const search = document.getElementById("Search").value;
-    let result = [];
-    inquiry.map((inquiry)=> {
+     const search = document.getElementById("Search").value;
+     let result = [];
+     inquiry.map((inquiry)=> {
        if(inquiry.title.indexOf(search) > -1){
-         result.push(inquiry);
-        }
-        dispatch(searchResult(result));
-        dispatch(push('/search/result')); 
-        
-    if(search != inquiry.title){
-        dispatch(push('/no/result')); 
+             result.push(inquiry);
+             dispatch(push('/search/result'));  
+             dispatch(searchResult(result)); 
+        }else{ 
+            dispatch(push('/no/result')); 
         }
      });
 };
@@ -48,7 +47,6 @@ const handleAdd = (e,inquiry) => {
 
    return(
      <React.Fragment>
-
         <form className={classes.root} noValidate autoComplete="off">
           <TextField id="Search" label="Type here" variant="outlined" />
         </form>

@@ -4,14 +4,15 @@ import { push } from 'connected-react-router'
 import {Link} from 'react-router-dom';
 
 export default function QuestionList() {
-    const inquiryTitles = useSelector(state => state.title.inquiryTitles);
+    const inquiry = useSelector(state => state.inquiry);
     
   return(
-      inquiryTitles.map((inquiryTitle)=>(
-      
-      <Link to={`/question/detail/${inquiryTitle.id}`}>
-        Show details
-      </Link> 
+      inquiry.inquiry.map((inquiry)=>(
+      <ul>
+        <Link to={`/question/detail/${inquiry.id}`}>
+          <li>{inquiry.title}</li>
+        </Link> 
+      </ul>
         ))
   );
 }

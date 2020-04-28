@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import { addAnswer } from '../modules/QuestionDetail';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import TypoGraphy from '@material-ui/core/Typography'
+
 
 const useStyles = makeStyles({
   root: {
@@ -29,23 +31,33 @@ const useStyles = makeStyles({
 });
 
 export default function QuestionDetail() {
-    const profile = useSelector(state => state.profile.profile);
+
     const classes = useStyles();
+      const search = useSelector(state => state.search.search);
+  const inquiry =  useSelector(state => state.inquiry.inquiry);
+  const profile =  useSelector(state => state.profile.profile);
+  const router =  useSelector(state => state.router.location.pathname);
+  const therapist = profile.filter(x => x.id === Number(router.substr(router.length -1,1)));
     
   return (
-      profile.map((profile)=>(
+      therapist.map((therapist)=>(
         <React.Fragment >
             <Card className={classes.root}>
               <CardContent>
                 <Typography className={classes.title} gutterBottom>
                 Name:<br></br>
-                 {profile.name}
+                 {therapist.name}
                 </Typography>
                 <Typography variant="body2" component="p">
-                workplace:<br></br>
-                  {profile.Workplace}
+                Workplace:<br></br>
+                  {therapist.Workplace}
                 </Typography>
+                <Typography variant="body2" component="p">
+                Location:<br></br>
+                  {therapist.Location}
+                </Typography>  
               </CardContent>
+              <Link to="/login"><Button renderAs="button"variant="contained" className={classes.button}>Sign in and make an appt</Button></Link>
             </Card>
         </React.Fragment>
         ))
@@ -53,3 +65,7 @@ export default function QuestionDetail() {
 }
 // const profile = useSelector(state => state.profile.profile[0]); [0]をつけたら表示されるようになったけど
 //これじゃあいつも同じ人しか表示されなくなる
+//  (str.substr(str.length-１,１)) substr:分割　.length:文字列の長さ 
+//therapist/detail/o <-この最後の文字を取るために↑をやる
+//Number('123'); 戻り値が123（数字として帰ってくる)
+//Number(router.substr(router.length -1,1))); これが数字として帰ってくる

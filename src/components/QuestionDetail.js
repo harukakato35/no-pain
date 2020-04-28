@@ -34,6 +34,8 @@ export default function QuestionDetail() {
     const login = useSelector(state => state.login);
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
+    const router =  useSelector(state => state.router.location.pathname);
+    const patient = inquiry.inquiry.filter(x => x.id === Number(router.substr(router.length -1,1)));
   
     const handleAdd = (e) => {
         e.preventDefault();
@@ -41,30 +43,32 @@ export default function QuestionDetail() {
     }
     
     const listItems = inquiry.answer.map((answer)=>
-      <li key={answer.id}>
-        {answer.content}
-      </li>
+        <li key={answer.id}>
+          {answer.answer}
+        </li>
     );
     
-    const listItems2 = inquiry.inquiry.map((inquiry)=>
-      <li key={inquiry.id}>
-        {inquiry.title}
-      </li>
-    ); 
+
+
+ 
   return (
-    <React.Fragment >
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-         
-        </Typography>
-        <Typography variant="body2" component="p">
-     {listItems2}
-        </Typography>
-      </CardContent>
-    </Card>
+    <React.Fragment>
+      {patient.map((patient)=>(
+  
+            <Card className={classes.root}>
+              <CardContent>
+                <Typography className={classes.title} gutterBottom>
+                Title:<br></br>
+                 {patient.title}
+                </Typography>
+                <Typography variant="body2" component="p">
+                Inquiry:<br></br>
+                  {patient.inquiry}
+                </Typography>
+              </CardContent>
+            </Card>
+     ))}
     {listItems}
-    
     {login.isLoginSuccess?
             <Grid item xs={12} sm={10}>
               <TextField
@@ -78,7 +82,6 @@ export default function QuestionDetail() {
                 multiline
                 rows="4"
                 variant="outlined"
-                
               />
           <Button variant="contained" onClick= {handleAdd} color="primary">
             Answer
@@ -86,7 +89,7 @@ export default function QuestionDetail() {
             </Grid>
              :
             <React.Fragment />
-             }  
+    }
     </React.Fragment>
-  );
+ );
 }

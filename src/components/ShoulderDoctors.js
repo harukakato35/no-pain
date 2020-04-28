@@ -25,16 +25,16 @@ const useStyles = makeStyles({
 export default function SearchResult(){
 
   const classes = useStyles();
-
   const profile = useSelector(state => state.profile.profile);
   
   return (
   
       profile.map((profile)=>(
-      
-      <Link to={`/therapist/detail/${profile.id}`}>
-        {profile.name}
-      </Link> 
+      <ul>
+        <Link to={`/therapist/detail/${profile.id}`}>
+          <li>{profile.name}</li>
+        </Link> 
+      </ul>
         ))
   );
  

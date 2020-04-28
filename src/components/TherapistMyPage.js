@@ -41,64 +41,45 @@ export default function TherapistMyPage(props) {
       );
     }
     const classes = useStyles();
-    const title = useSelector(state => state.title.inquiryTitles);
     const dispatch = useDispatch();
     const appointment = useSelector(state => state.appointments.appointment);
     const review = useSelector(state => state.review.review);
+    const answer = useSelector(state => state.inquiry.answer);
+    const inquiry = useSelector(state => state.inquiry.inquiry);
+    const appointments = useSelector(state => state.appointments.appointments);
     
     const  Message = () => {
       dispatch({ type: "ADD_MESSAGE" }); //dispatchを実行することでReducerが実行される
       dispatch(push('/chat'));
     };
 
-    const appointments = useSelector(state => state.appointments.appointments);
+   
     const listItems = appointments.map((appointment)=>
+      <li key={appointment.id}>
+        {appointment.time}
+      </li>
+    );
+    
+    const listItems1 = inquiry.map((inquiry)=>
+      <li key={inquiry.id}>
+        {inquiry.title}
+      </li>
+    );
 
-    <li key={appointment.id}>
-      {appointment.time}
-    </li>
+    const listItems2 = answer.map((answer)=>
+      <li key={answer.id}>
+        {answer.answer}
+      </li>
     );
 
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={7}>
-            <TableContainer component={Paper}>
-                  <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Question Lists</TableCell>
-                        <TableCell align="right">Title</TableCell>
-                        <TableCell align="right">相談日時</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        <TableRow>
-                          <TableCell component="th" scope="row">
-                          </TableCell>
-                          <TableCell align="right"></TableCell>
-                          <TableCell align="right"></TableCell>
-                        </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-        </Grid>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>
-               <Link to="/therapist/myprofile">
-                  Edit/Show your profile
-              </Link>
-            </Paper>
-            <Paper className={classes.paper}>
-               <Link to="/therapist/profile">
-                 Add your profile
-              </Link>
-            </Paper>            
-          </Grid>
+      <Grid container item xs={9} spacing={1}>
+      <Grid item xs={12}>
+      <Link to="/questionlist"><Button renderAs="button"variant="contained" className={classes.button}>Answer to patients' questions</Button></Link>
       </Grid>
-      <Link to="/questionlist"><Button renderAs="button"variant="contained" className={classes.button}>Answer</Button></Link>
-      <Grid container spacing={3}>
-        <Grid item xs={7}>
+        <Grid item xs={12}>
             <TableContainer component={Paper}>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
@@ -113,17 +94,17 @@ export default function TherapistMyPage(props) {
                           <TableCell component="th" scope="row">
                             1
                           </TableCell>
-                          <TableCell align="right"></TableCell>
+                          <TableCell align="right">{listItems2}</TableCell>
                           <TableCell align="right"></TableCell>
                         </TableRow>
                     </TableBody>
                   </Table>
                 </TableContainer>
        　 </Grid>
-      </Grid>
+      <Grid item xs={12}>
       <ButtonForChat onClick={Message}/>
-      <Grid container spacing={3}>
-        <Grid item xs={7}>
+      </Grid>
+        <Grid item xs={12}>
             <TableContainer component={Paper}>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
@@ -145,7 +126,7 @@ export default function TherapistMyPage(props) {
                   </Table>
                 </TableContainer>
           </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={12}>
             <TableContainer component={Paper}>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
@@ -166,8 +147,23 @@ export default function TherapistMyPage(props) {
                     </TableBody>
                   </Table>
                 </TableContainer>
-                </Grid>
+            </Grid>
         </Grid>
+        <Grid container item xs={3} spacing={3}>
+         <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                 <Link to="/therapist/myprofile">
+                    Edit/Show your profile
+                </Link>
+              </Paper>
+              <Paper className={classes.paper}>
+                 <Link to="/therapist/profile">
+                   Add your profile
+                </Link>
+              </Paper>            
+            </Grid>
+        </Grid>
+      </Grid>
     </div>
   );
 }

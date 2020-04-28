@@ -8,7 +8,6 @@ import QuestionDetail from './modules/QuestionDetail';
 import Appointment from './modules/Appointment';
 import Search from './modules/Search';
 import Message from './modules/Message';
-import Chat from './modules/Chat';
 import TherapistProfile from './modules/TherapistProfile';
 import TherapistMyprofile from './modules/TherapistMyprofile';
 import Review from './modules/Review';

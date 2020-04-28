@@ -31,10 +31,11 @@ export default function SearchResult(){
   return (
   
       profile.map((profile)=>(
-      
-      <Link to={`/therapist/detail/${profile.id}`}>
-        {profile.name}
-      </Link> 
+      <ul>
+        <Link to={`/therapist/detail/${profile.id}`}>
+          <li>{profile.name}</li>
+        </Link> 
+      </ul>
         ))
   );
  

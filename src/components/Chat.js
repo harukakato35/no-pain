@@ -9,11 +9,13 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import { addMessage } from '../modules/Chat';
+import { addMessage } from '../modules/Message';
 import Paper from '@material-ui/core/Paper';
 import { addChat } from '../modules/Message';
 
-const useStyles = makeStyles({
+
+export default function QuestionDetail(props) {
+  const useStyles = makeStyles({
       root: {
         minWidth: 275,
       },
@@ -35,11 +37,6 @@ const useStyles = makeStyles({
        float: "right" 
       }
 });
-
-
-
-
-export default function QuestionDetail(props) {
     const chat = useSelector(state => state.chat);
     const dispatch = useDispatch();
     const login = useSelector(state => state.login);
@@ -49,12 +46,12 @@ export default function QuestionDetail(props) {
 
     const handleAdd1 = (e) => {
         e.preventDefault();
-        dispatch(addChat(document.getElementById("Message").value));
+        dispatch(addMessage(document.getElementById("Message").value));
     };
 
     const handleAdd2 = (e) => {
         e.preventDefault();
-        dispatch(addMessage(document.getElementById("Chat").value));
+        dispatch(addChat(document.getElementById("Message").value));
     };
     
     const ListItems =() =>{
@@ -62,18 +59,18 @@ export default function QuestionDetail(props) {
         login.isLoginSuccess?
         chat.message.map((message)=>(
         message.isPatient == login.isPatient?
-              <li key={message.id} className={classes.style1}>
-                {message.content}
-              </li>:     
               <li key={message.id} className={classes.style2}>
-                {message.content}
+                {message.message}
+              </li>:  
+              <li key={message.id} className={classes.style1}>
+                {message.message}
               </li>
         )):
         <React.Fragment />
       );
      }
     
-    const MessageA = () =>{
+    const Message = () =>{
             if(login.isLoginSuccess){
             　if(login.isPatient==true){
                 return(
@@ -96,33 +93,33 @@ export default function QuestionDetail(props) {
                       </Button>
                       </Grid>
                       </div>
-      );
+                  );
                  } else {
-        return(
-            <div>
-                    <Grid item xs={12} sm={10}>
-                      <TextField
-                        required
-                        id="Chat"
-                        name="Chat"
-                        label="Chat"
-        
-                        fullWidth
-                        autoComplete="lname"
-                        multiline
-                        rows="4"
-                        variant="outlined"
-                      />
-                      <Button variant="contained" onClick={handleAdd2} color="primary">
-                        Send
-                      </Button>
-                      </Grid>
-                        </div>
-                      );
-                       }
-                 }
-                 
-          };
+                    return(
+                        <div>
+                                <Grid item xs={12} sm={10}>
+                                  <TextField
+                                    required
+                                    id="Message"
+                                    name="Message"
+                                    label="Message"
+                    
+                                    fullWidth
+                                    autoComplete="lname"
+                                    multiline
+                                    rows="4"
+                                    variant="outlined"
+                                  />
+                                  <Button variant="contained" onClick={handleAdd2} color="primary">
+                                    Send
+                                  </Button>
+                                  </Grid>
+                                    </div>
+                                  );
+                               }
+                         }
+                         
+                  };
 
 return(
             <React.Fragment >
@@ -135,44 +132,17 @@ return(
                   </CardContent>
                 </Card>
                  {login.isLoginSuccess==null || login.isPatient==null?
-                   <React.Fragment/>:<MessageA />}
+                   <React.Fragment/>:<Message />}
                   {chat.message==null?
-                    <React.Fragment />:
-                    <ListItems/>
-                    }
+                    <React.Fragment />:<ListItems/>}
             </React.Fragment>
     );
 }
-// alert('aaa'):検証したいときに使う
-//const listItems = chatT.message.map((message)=>{
-    // if(login.isLoginSuccess){
-    // 　if(login.isPatient==true){
-    //     if(message.id % 2 === 0) {
-    //       return(
-    //           <li key={props.message.id} className={classes.style1}>
-    //             {props.message.content}
-    //           </li>            
-    //         );
-    //     } else {
-    //       return(
-    //           <li key={props.message.id} className={classes.style2}>
-    //             {props.message.content}
-    //           </li>            
-    //         );
-    //             }
-    //           }else{
-    //   if(message.id % 2 === 0) {
-    //       return(
-    //           <li key={message.id} className={classes.style2}>
-    //             {message.content}
-    //           </li>);
-    //     } else {
-    //       return(
-    //           <li key={message.id} className={classes.style1}>
-    //             {message.content}
-    //           </li>);
-    //             }                
-    //           }
-    //         }
-    //     }
-    //   );
+//{login.isLoginSuccess==null || login.isPatient==null?
+//ログインしているかつ患者の場合の処理の場合
+
+// //        message.isPatient == login.isPatient?
+//               <li key={message.id} className={classes.style1}>
+//                 {message.content}
+//               </li>: <-これはelseという意味
+//chatのmessageに値が入ってなければ何も表示させない

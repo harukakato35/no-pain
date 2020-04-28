@@ -1,11 +1,10 @@
 const MAKE_APPOINTMENT = 'MAKE_APPOINTMENT';
 
-export function addAppt(appointment,appointments) {
-  return { type:MAKE_APPOINTMENT, appointment, appointments };
+export function addAppt(appointments) {
+  return { type:MAKE_APPOINTMENT, appointments };
 }
 
 const initialState = {
-    appointment: '2020-03-25T21:11:54',
     appointments:[
     {id:0, time:'2020-03-18T21:11:54'},
     {id:1, time:'2020-04-18T21:11:54'},
@@ -17,7 +16,7 @@ export default function reducer(state=initialState, action) {
     case MAKE_APPOINTMENT:
       return { 
         ...state, 
-        appointment:action.appointment
+        appointments:[...state.appointments,{id: 2, time:action.appointments}],
       };
     default:
       return state;

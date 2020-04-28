@@ -66,20 +66,19 @@ function ButtonForReview(props){
     const classes = useStyles();
     const mypage = useSelector(state => state.mypage); //global stateを呼び出すため,Dev toolをみて決めてる
     const dispatch = useDispatch();　//Login.jsのreducerを使うため
-    const title = useSelector(state => state.title.inquiryTitle);
+    const title = useSelector(state => state.title);
     const answer = useSelector(state => state.inquiry.answer &&  state.inquiry.answer[0].content)
-    const appointment = useSelector(state => state.appointments.appointment);
+    const appointments = useSelector(state => state.appointments.appointments);
     const chat = useSelector(state => state.message);
+    const inquiry = useSelector(state => state.inquiry);
 
     
-    const  Advice = () => {
-      dispatch({ type: "ASK_FOR_ADVICE" }); //dispatchを実行することでReducerが実行される
+    const  Ask = () => {
       dispatch(push('/consultation'));
     };
     
 
     const  Appointment = () => {
-      dispatch({ type: "MAKE_APPOINTMENT" }); //dispatchを実行することでReducerが実行される
       dispatch(push('/appointment'));
     };
     
@@ -93,6 +92,17 @@ function ButtonForReview(props){
       dispatch(push('/review'));
     };
     
+    const listItems2 = inquiry.inquiry.map((inquiry)=>
+      <li key={inquiry.id}>
+       {inquiry.title}
+      </li>
+    );    
+
+    const listItems3 = appointments.map((appointments)=>
+      <li key={appointments.id}>
+       {appointments.time}
+      </li>
+    );
 
   return (
     <div className={classes.root}>
@@ -108,19 +118,18 @@ function ButtonForReview(props){
                       </TableRow>
                     </TableHead>
                     <TableBody>
-
                         <TableRow>
                           <TableCell component="th" scope="row">
                             1
                           </TableCell>
-                          <TableCell align="right">{title}</TableCell>
-                          <TableCell align="right">{title}</TableCell>
+                          <TableCell component="th" scope="row">
+                            {listItems2}
+                          </TableCell>
                         </TableRow>
-                    
                     </TableBody>
                   </Table>
                 </TableContainer>
-              <ButtonForAdvice onClick={Advice}/>
+              <ButtonForAdvice onClick={Ask}/>
         </Grid>
       </Grid>
       <Grid container spacing={3}>
@@ -155,8 +164,8 @@ function ButtonForReview(props){
                     <TableHead>
                       <TableRow>
                         <TableCell>Your appointment</TableCell>
-                        <TableCell align="right">タイトル</TableCell>
                         <TableCell align="right">相談日時</TableCell>
+                        <TableCell align="right"></TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -165,7 +174,7 @@ function ButtonForReview(props){
                           <TableCell component="th" scope="row">
                             1
                           </TableCell>
-                          <TableCell align="right">{appointment}</TableCell>
+                          <TableCell align="right">{listItems3}</TableCell>
                           <TableCell align="right"></TableCell>
                         </TableRow>
                     

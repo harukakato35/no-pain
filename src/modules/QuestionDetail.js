@@ -1,8 +1,13 @@
+  
+const ADD_ANSWER = "ADD_ANSWER ";
 const ADD_INQUIRY = "ADD_INQUIRY ";
 
+export function addInquiry(inquiry) {
+  return { type:ADD_INQUIRY,inquiry};
+}
 
-export function addAnswer(inquiryTitles) {
-  return { type:ADD_INQUIRY, inquiryTitles };
+export function addAnswer(answer) {
+  return { type:ADD_ANSWER,answer};
 }
 
 
@@ -14,8 +19,8 @@ const initialState = {
     inquiry:"I've getting treatment from physio therapy but it's not getting better"},
     ],
     answer:[
-    {id:0, content: "私のところに来てください"}, 
-    {id:1, content: "私のところに来てください"}
+    {id:0, answer: "私のところに来てください"}, 
+    {id:1, answer: "私のところに来てください"}
     ]
 };
 
@@ -24,13 +29,18 @@ const initialState = {
 export default function reducer(state=initialState, action) {
     console.log(action);
     switch (action.type){
-        case ADD_INQUIRY:
+      case ADD_INQUIRY:
             return {
                 ...state, 
-                answer:[...state.answer,{id: 2, content:action.inquiryTitles}],
-            }
+                inquiry:[...state.inquiry,{id: 2, inquiry:action.inquiry, title:action.inquiry}],
+            };
+        case ADD_ANSWER:
+            return {
+                ...state, 
+                answer:[...state.answer,{id: 2, answer:action.answer}],
+            };
+
             default: return state
             
     }
 }
-//                inquiry: action.inquiryTitles,
