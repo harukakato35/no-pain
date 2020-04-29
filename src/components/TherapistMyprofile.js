@@ -28,13 +28,18 @@ const useStyles = makeStyles(theme => ({
   },
   link:{
     textDecoration: 'none',
+  },
+  list:{
+    listStyle:"none",
   }
 }));
 
 
  function TherapistMyprofile (){
-        const classes = useStyles();
+      const classes = useStyles();
       const myprofile = useSelector(state => state.myprofile.myprofile); 
+
+
       return (
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -53,9 +58,21 @@ const useStyles = makeStyles(theme => ({
                         <TableRow>
                           <TableCell component="th" scope="row">
                           </TableCell>
-                          <TableCell align="right"></TableCell>
-                          <TableCell align="right">{myprofile.name}</TableCell>
-                           <TableCell align="right">{myprofile.Workplace}</TableCell>
+                          <TableCell align="left"  className={classes.list}>
+                              <li>Name</li>
+                              <li>Workplace</li>
+                              <li>Location</li>
+                              <li>Type</li>
+                              <li>Special</li>
+                          </TableCell>
+                          <TableCell align="right" className={classes.list}>
+                              <li>{myprofile.name}</li>
+                              <li>{myprofile.Workplace}</li>
+                              <li>{myprofile.Location}</li>
+                              <li>{myprofile.Type}</li>
+                              <li>{myprofile.Special}</li>
+                          </TableCell>
+ 
                         </TableRow>
                     </TableBody>
                   </Table>

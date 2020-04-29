@@ -32,7 +32,7 @@ export default function Appointment(props) {
           margin="normal"
           id="date-picker-dialog"
           label="Date picker dialog"
-          format="MM/dd/yyyy"
+          format="yyyy/MM/dd/HH:mm"
           value={selectedDate}
           onChange={handleDateChange}
           KeyboardButtonProps={{

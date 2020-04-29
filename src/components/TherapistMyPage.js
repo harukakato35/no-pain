@@ -78,9 +78,9 @@ export default function TherapistMyPage(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-      <Grid container item xs={9} spacing={1}>
+      <Grid container item xs={9} spacing={2}>
       <Grid item xs={12}>
-      <Link to="/questionlist" className={classes.link}><Button renderAs="button"variant="contained" className={classes.button}>Answer to patients' questions</Button></Link>
+      <Link to="/questionlist" className={classes.link} ><Button renderAs="button"variant="contained" className={classes.button} >Answer to patients' questions</Button></Link>
       </Grid>
         <Grid item xs={12}>
             <TableContainer component={Paper}>
@@ -88,14 +88,13 @@ export default function TherapistMyPage(props) {
                     <TableHead>
                       <TableRow>
                         <TableCell>Your Answers</TableCell>
-                        <TableCell align="right">タイトル</TableCell>
-                        <TableCell align="right">Answered 日時</TableCell>
+                        <TableCell align="right">Title</TableCell>
+                        <TableCell align="right"></TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                         <TableRow>
                           <TableCell component="th" scope="row">
-                            1
                           </TableCell>
                           <TableCell align="right">{listItems2}</TableCell>
                           <TableCell align="right"></TableCell>
@@ -114,13 +113,12 @@ export default function TherapistMyPage(props) {
                       <TableRow>
                         <TableCell>Appointment lists</TableCell>
                         <TableCell align="right"></TableCell>
-                        <TableCell align="right">予約日時</TableCell>
+                        <TableCell align="right">Time</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                         <TableRow>
                           <TableCell component="th" scope="row">
-                            1
                           </TableCell>
                           <TableCell align="right"></TableCell>
                           <TableCell align="right">{appointment}{listItems}</TableCell>
@@ -136,13 +134,12 @@ export default function TherapistMyPage(props) {
                       <TableRow>
                         <TableCell>Your reviews</TableCell>
                         <TableCell align="right"></TableCell>
-                        <TableCell align="right">予約日時</TableCell>
+                        <TableCell align="right"></TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                         <TableRow>
                           <TableCell component="th" scope="row">
-                            1
                           </TableCell>
                           <TableCell align="right"></TableCell>
                           <TableCell align="right">{review}</TableCell>

@@ -80,19 +80,19 @@ export default function CenteredGrid() {
       <form>
         <React.Fragment>
         <form className={classes.top} noValidate autoComplete="off">
-          <TextField id="Name" label="Type here" variant="outlined" />
+          Name :<TextField id="Name" label="Type here" variant="outlined" />
         </form>
         <form className={classes.float1} noValidate autoComplete="off">
-          <TextField id="Workplace" label="Type here" variant="outlined" />
+          Workplace :<TextField id="Workplace" label="Type here" variant="outlined" />
         </form>
         <form className={classes.float2} noValidate autoComplete="off">
-          <TextField id="Location" label="Type here" variant="outlined" />
+          Location :<TextField id="Location" label="Type here" variant="outlined" />
         </form>
         <form className={classes.float3} noValidate autoComplete="off">
-          <TextField id="Type" label="Type here" variant="outlined" />
+          Type :<TextField id="Type" label="Type here" variant="outlined" />
         </form>
         <form className={classes.float4} noValidate autoComplete="off">
-          <TextField id="Special" label="Type here" variant="outlined" />
+         Special :<TextField id="Special" label="Type here" variant="outlined" />
         </form>
           <Button variant="contained" onClick= {handleAdd} color="primary">
             Submit
@@ -101,3 +101,10 @@ export default function CenteredGrid() {
       </form>
   );
 }
+// }//        dispatch(addMyProfile(
+//             document.getElementById("Name").value,
+//             document.getElementById("Workplace").value,
+//             document.getElementById("Location").value,
+//             document.getElementById("Type").value,
+//             document.getElementById("Special").value,
+//         )); 複数の値をdispatchする場合はこう書く。

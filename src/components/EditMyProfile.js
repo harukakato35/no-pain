@@ -19,44 +19,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-  top: {
-    position:'fixed',
-    left:18,
-    top: 150,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-    float1: {
-    position:'fixed',
-    left:0,
-    top:250,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-    float2: {
-    position:'fixed',
-    left:0,
-    top:350,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-    float3: {
-    position:'fixed',
-    left:0,
-    top:450,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-    float4: {
-    position:'fixed',
-    left:0,
-    top:550,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
+  form:{
+  width: "15%",
   },
   link:{
   textDecoration: 'none',
@@ -91,7 +55,9 @@ export default function CenteredGrid() {
     <form onSubmit={printValues}>
       <label>
         Name:
+         <br /><br />
         <input
+          className={classes.form}
           value={form.name}
           name="name"
           onChange={updateField}
@@ -100,7 +66,9 @@ export default function CenteredGrid() {
       <br /><br />
       <label>
         Workplace:
+         <br /><br />
         <input
+          className={classes.form}
           value={form.workplace}
           name="workplace"
           type="workplace"
@@ -110,7 +78,9 @@ export default function CenteredGrid() {
       <br /><br />
       <label>
         Location:
+         <br /><br />
         <input
+          className={classes.form}
           value={form.location}
           name="location"
           onChange={updateField}
@@ -119,7 +89,9 @@ export default function CenteredGrid() {
       <br /><br />
       <label>
         Type:
+        <br /><br />
         <input
+          className={classes.form}
           value={form.type}
           name="type"
           onChange={updateField}
@@ -128,16 +100,21 @@ export default function CenteredGrid() {
       <br /><br />
       <label>
         Speciality:
+         <br /><br />
         <input
+          className={classes.form}
           value={form.speciality}
           name="speciality"
           onChange={updateField}
         />
       </label>
-      <br />
+     <br /><br />
     <Link to="/edit/complete" className={classes.link}><Button renderAs="button"variant="contained" className={classes.button}>Edit</Button></Link>
     </form>
   );
 }
 
 //localで管理してるからあくまで値は変わらない。editできるように見せてるだけ
+//onChange={updateField} ->既存の内容を変えられる
+//e.preventDefault(); ->preventDefault() method cancels the event if it is cancelable, meaning that the 
+//default action that belongs to the event will not occur

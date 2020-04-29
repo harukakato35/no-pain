@@ -6,8 +6,8 @@ export function addAppt(appointments) {
 
 const initialState = {
     appointments:[
-    {id:0, time:'2020-03-18T21:11:54'},
-    {id:1, time:'2020-04-18T21:11:54'},
+    {id:0, time:'2020/03/18/21:11'},
+    {id:1, time:'2020/04/18/21:11'},
     ]
 };
 

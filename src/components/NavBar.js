@@ -34,6 +34,7 @@ const NavBar = () => {
     const login = useSelector(state => state.login);
     const classes = useStyles();
     return (
+     <React.Fragment >
     <AppBar  className={classes.bar}  position="static">
         <Toolbar>
                 <List component="nav">
@@ -43,14 +44,11 @@ const NavBar = () => {
                                  <Link to="/"　className={classes.typography}>Home</Link>
                             </TypoGraphy>
                         </ListItemText>
-        
-        
                         <ListItemText inset>
                             <TypoGraphy  variant="title">
-                                <PatientLogin   />
+                                <PatientLogin />
                        </TypoGraphy>
                         </ListItemText>
-        
                         <ListItemText inset>
                             <TypoGraphy variant="title">
                                 <TherapistLogin />
@@ -61,26 +59,20 @@ const NavBar = () => {
                             <TypoGraphy color="inherit" variant="title">
                                 <Link to="/mypage" 　className={classes.mypage}>Mypage</Link>
                             </TypoGraphy>
-                            </ListItemText> 
-                            :
-                            <React.Fragment />
-                           }  
-                        {login.isPatient==false?
+                        　</ListItemText> 
+                        :
                          <ListItemText inset>
                             <TypoGraphy color="inherit" variant="title">
                                 <Link to="/therapist/mypage" 　className={classes.mypage}>Mypage</Link>
                             </TypoGraphy>
-                            </ListItemText> 
-                            :
-                            <React.Fragment />
+                        </ListItemText> 
                            }   
                     </ListItem >
                 </List>              
-
           </Toolbar>
         </AppBar>
-
-    )
+  </React.Fragment >
+    );
 }
 
 export default NavBar;

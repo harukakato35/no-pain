@@ -60,3 +60,4 @@ const handleAdd = (e,inquiry) => {
 //global stateはJS関数の中で呼び出せない
 //{handleAdd(inquiry)} 引数を渡せる
 //if文の{}ないの変数は外で呼び出せない
+//(inquiry.title.indexOf(search) > -1)   = -1 だった場合は値が一致していないってこと：これはindexOfの決まり

@@ -13,7 +13,13 @@ export default function reducer(state=initialState, action) {
     case ADD_MY_PROFILE:
       return { 
         ...state, 
-         myprofile:[{name:action.name , Workplace:action.Workplace, Location:action.Location,Type:action.Type,Special:action.Special}],
+         myprofile:[
+           {name:action.name, 
+            Workplace:action.Workplace, 
+            Location:action.Location,
+            Type:action.Type,
+            Special:action.Special}
+         ],
       };
     default:
       return state;

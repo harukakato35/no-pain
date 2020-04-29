@@ -53,5 +53,5 @@ export default function reducer(state=initialState, action) {
 //→省ける。
 //この記事は良い:https://medium.com/swlh/the-good-the-bad-of-react-redux-and-why-ducks-might-be-the-solution-1567d5bdc698
 //isPatient: null,:nullにするのは誤判別がへるのと、ログイン前だからこういう処理
-//ログインごはisPatient: true/falseでよい
+//　isPatient: action.isPatient->ログインごはisPatient: true/falseでよい
 //引数であり、actionは何かが入ってくるってこと

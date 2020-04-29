@@ -67,7 +67,7 @@ function ButtonForReview(props){
     const mypage = useSelector(state => state.mypage); //global stateを呼び出すため,Dev toolをみて決めてる
     const dispatch = useDispatch();　//Login.jsのreducerを使うため
     const title = useSelector(state => state.title);
-    const answer = useSelector(state => state.inquiry.answer &&  state.inquiry.answer[0].content)
+    const answer = useSelector(state => state.inquiry.answer)
     const appointments = useSelector(state => state.appointments.appointments);
     const chat = useSelector(state => state.message);
     const inquiry = useSelector(state => state.inquiry);
@@ -112,15 +112,14 @@ function ButtonForReview(props){
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">タイトル</TableCell>
-                        <TableCell align="right">相談日時</TableCell>
+                        <TableCell>Your past consultation</TableCell>
+                        <TableCell align="right">title</TableCell>
+                        <TableCell align="right"></TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                         <TableRow>
                           <TableCell component="th" scope="row">
-                            1
                           </TableCell>
                           <TableCell component="th" scope="row">
                             {listItems2}
@@ -138,18 +137,17 @@ function ButtonForReview(props){
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>回答内容</TableCell>
-                        <TableCell align="right">タイトル</TableCell>
-                        <TableCell align="right">回答日時</TableCell>
+                        <TableCell>Answers from therapists</TableCell>
+                        <TableCell align="right"></TableCell>
+                        <TableCell align="right"></TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
 
                         <TableRow>
                           <TableCell component="th" scope="row">
-                            1
                           </TableCell>
-                          <TableCell align="right">{answer}</TableCell>
+                          <TableCell align="right"></TableCell>
                           <TableCell align="right"></TableCell>
                           <ButtonForApp onClick={Appointment}/>
                           <ButtonForChat onClick={Message}/>
@@ -164,7 +162,7 @@ function ButtonForReview(props){
                     <TableHead>
                       <TableRow>
                         <TableCell>Your appointment</TableCell>
-                        <TableCell align="right">相談日時</TableCell>
+                        <TableCell align="right">Time</TableCell>
                         <TableCell align="right"></TableCell>
                       </TableRow>
                     </TableHead>
@@ -172,7 +170,6 @@ function ButtonForReview(props){
 
                         <TableRow>
                           <TableCell component="th" scope="row">
-                            1
                           </TableCell>
                           <TableCell align="right">{listItems3}</TableCell>
                           <TableCell align="right"></TableCell>

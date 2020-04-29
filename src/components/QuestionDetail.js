@@ -36,6 +36,7 @@ export default function QuestionDetail() {
     const bull = <span className={classes.bullet}>•</span>;
     const router =  useSelector(state => state.router.location.pathname);
     const patient = inquiry.inquiry.filter(x => x.id === Number(router.substr(router.length -1,1)));
+    console.log(patient);
   
     const handleAdd = (e) => {
         e.preventDefault();
@@ -91,3 +92,10 @@ export default function QuestionDetail() {
     </React.Fragment>
  );
 }
+// const patient = inquiry.inquiry.filter(x => x.id === Number(router.substr(router.length -1,1)));
+//x は戻り値
+//配列の全ての要素の中から条件に一致する要素で、新たな配列を生成したいとき
+//Number():文字列を数値に変換する
+//const router =  useSelector(state => state.router.location.pathname); この値をトルコトンイよってquestion/detail/番号が取れる
+//substring() method returns the part of the string between the start and end indexes, or to the end of the string.
+//substr(router.length -1,1))); これが何を拾ったかは、console.log()でconsoleで確かめればわかる(デバッグ)

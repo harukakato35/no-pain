@@ -33,3 +33,5 @@ export default function reducer(state=initialState, action) {
             
     }
 }
+// message:[...state.message,{id: 5, message:action.message, isPatient:true}]
+//->isPatient:trueかfalseで分けることで、patientのメッセージかtherapistのメッセージか識別できる。
