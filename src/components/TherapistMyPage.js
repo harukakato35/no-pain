@@ -75,6 +75,12 @@ export default function TherapistMyPage(props) {
       </li>
     );
 
+    const listItems3 = review.map((review)=>
+      <li key={review.id}>
+        {review.review}
+      </li>
+    );
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -142,7 +148,7 @@ export default function TherapistMyPage(props) {
                           <TableCell component="th" scope="row">
                           </TableCell>
                           <TableCell align="right"></TableCell>
-                          <TableCell align="right">{review}</TableCell>
+                          <TableCell align="right">{listItems3}</TableCell>
                         </TableRow>
                     </TableBody>
                   </Table>

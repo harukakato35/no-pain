@@ -5,7 +5,7 @@ export function writeReview(review) {
 }
 
 const initialState = {
-    review: []
+    review: [{id:0, review:'Good therapist'}],
 };
 
 export default function reducer(state=initialState, action) {
@@ -13,9 +13,9 @@ export default function reducer(state=initialState, action) {
     case WRITE_A_REVIEW:
             return {
                 ...state, 
-                review: action.review //stateにはinitialStateが入っていて、5行目の中にcountが入ってるから
+                review: [{id:1, review:action.review}]//stateにはinitialStateが入っていて、5行目の中にcountが入ってるから
             }
     default:
       return state;
   }    
-}
+} 

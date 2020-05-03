@@ -24,38 +24,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-    float1: {
-    position:'fixed',
-    left:0,
-    top:250,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-    float2: {
-    position:'fixed',
-    left:0,
-    top:350,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-    float3: {
-    position:'fixed',
-    left:0,
-    top:450,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-    float4: {
-    position:'fixed',
-    left:0,
-    top:550,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
 }));
 
 export default function CenteredGrid() {
@@ -79,21 +47,22 @@ export default function CenteredGrid() {
   return (
       <form>
         <React.Fragment>
-        <form className={classes.top} noValidate autoComplete="off">
-          Name :<TextField id="Name" label="Type here" variant="outlined" />
-        </form>
-        <form className={classes.float1} noValidate autoComplete="off">
-          Workplace :<TextField id="Workplace" label="Type here" variant="outlined" />
-        </form>
-        <form className={classes.float2} noValidate autoComplete="off">
-          Location :<TextField id="Location" label="Type here" variant="outlined" />
-        </form>
-        <form className={classes.float3} noValidate autoComplete="off">
-          Type :<TextField id="Type" label="Type here" variant="outlined" />
-        </form>
-        <form className={classes.float4} noValidate autoComplete="off">
-         Special :<TextField id="Special" label="Type here" variant="outlined" />
-        </form>
+        <br></br>
+        <form  noValidate autoComplete="off">
+          Name :<br></br><TextField id="Name" label="Type here" variant="outlined" />
+        </form><br></br>
+        <form noValidate autoComplete="off">
+          Workplace :<br></br><TextField id="Workplace" label="Type here" variant="outlined" />
+        </form><br></br>
+        <form  noValidate autoComplete="off">
+          Location :<br></br><TextField id="Location" label="Type here" variant="outlined" />
+        </form><br></br>
+        <form noValidate autoComplete="off">
+          Type :<br></br><TextField id="Type" label="Type here" variant="outlined" />
+        </form><br></br>
+        <form noValidate autoComplete="off">
+         Special :<br></br><TextField id="Special" label="Type here" variant="outlined" />
+        </form><br></br>
           <Button variant="contained" onClick= {handleAdd} color="primary">
             Submit
           </Button>

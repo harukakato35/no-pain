@@ -118,3 +118,11 @@ export default function CenteredGrid() {
 //onChange={updateField} ->既存の内容を変えられる
 //e.preventDefault(); ->preventDefault() method cancels the event if it is cancelable, meaning that the 
 //default action that belongs to the event will not occur
+  // const updateField = e => {
+  //   setValues({
+  //     ...form,
+  //     [e.target.name]: e.target.value <- name: 'HK', に相当してる
+  //   });
+  // };
+          // value={form.speciality}->ここで記入したものが入る　->e.target.value
+          // name="speciality"

@@ -36,7 +36,8 @@ export default function QuestionDetail() {
     const bull = <span className={classes.bullet}>•</span>;
     const router =  useSelector(state => state.router.location.pathname);
     const patient = inquiry.inquiry.filter(x => x.id === Number(router.substr(router.length -1,1)));
-    console.log(patient);
+
+    console.log(router.length -1);
   
     const handleAdd = (e) => {
         e.preventDefault();
@@ -99,3 +100,5 @@ export default function QuestionDetail() {
 //const router =  useSelector(state => state.router.location.pathname); この値をトルコトンイよってquestion/detail/番号が取れる
 //substring() method returns the part of the string between the start and end indexes, or to the end of the string.
 //substr(router.length -1,1))); これが何を拾ったかは、console.log()でconsoleで確かめればわかる(デバッグ)
+//console.log(router.length -1);の結果は17だった。question/detail/1
+//(router.substr(router.length -1,1<-　これが17桁のうち最後の一番目を表示するって意味。

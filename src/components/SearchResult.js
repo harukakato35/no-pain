@@ -29,7 +29,7 @@ export default function SearchResult(){
   return (
       search.map((search)=>(
       <Link to={`/question/detail/${search.id}`}>
-        {search.title}
+       <li> {search.title}</li>
       </Link> 
       ))
    );

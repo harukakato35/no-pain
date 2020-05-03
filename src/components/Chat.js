@@ -12,6 +12,7 @@ import TextField from '@material-ui/core/TextField';
 import { addMessage } from '../modules/Message';
 import Paper from '@material-ui/core/Paper';
 import { addChat } from '../modules/Message';
+import Box from '@material-ui/core/Box';
 
 
 export default function QuestionDetail(props) {
@@ -30,30 +31,9 @@ export default function QuestionDetail(props) {
       post: {
         marginBottom: 12,
       },
-      style1:{
-       float: "left",
-        bottom: 0,
-        listStyle:'none',
-        width: '40%',
-        border: '0.5px solid black',
-        borderRadius: '10px',
-        margin: '5px',
-        backgroundColor: "#D0B0FF",
-        padding: '10px',
-        display: 'inline-block'
+      line:{
+        listStyle: "none",
       },
-      style2:{
-       float: "right",
-        bottom: 0,
-        width: '40%',
-        listStyle:'none',
-        backgroundColor: "#FFBEDA",
-        border: '0.5px solid black',
-        borderRadius: '10px',
-        margin: '5px',
-        padding: '10px',
-
-    },
 });
     const chat = useSelector(state => state.chat);
     const dispatch = useDispatch();
@@ -77,12 +57,25 @@ export default function QuestionDetail(props) {
         login.isLoginSuccess?
         chat.message.map((message)=>(
         message.isPatient == login.isPatient?
-              <li key={message.id} className={classes.style2}>
-                {message.message}
-              </li>:  
-              <li key={message.id} className={classes.style1}>
-                {message.message}
-              </li>
+          <div style={{ width: '100%' }}>
+            <Box display="flex" flexDirection="row" p={1} m={1} bgcolor="background.paper">
+              <Box p={1} bgcolor="#FFBEDA">
+                <li key={message.id} className={classes.line}>
+                  {message.message}
+                </li>
+              </Box>
+            </Box>
+          </div>
+          :  
+          <div style={{ width: '100%' }}>
+            <Box display="flex" flexDirection="row-reverse" p={1} m={1} bgcolor="background.paper">
+              <Box p={1} bgcolor="#D0B0FF" >
+                 <li key={message.id}  className={classes.line}>
+                  {message.message}
+                </li>
+              </Box>
+            </Box>
+         </div>
         )):
         <React.Fragment />
       );

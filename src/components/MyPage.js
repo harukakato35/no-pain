@@ -104,6 +104,12 @@ function ButtonForReview(props){
       </li>
     );
 
+    const listItems4 = answer.map((answer)=>
+      <li key={answer.id}>
+       {answer.answer}
+      </li>
+    );
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -138,7 +144,7 @@ function ButtonForReview(props){
                     <TableHead>
                       <TableRow>
                         <TableCell>Answers from therapists</TableCell>
-                        <TableCell align="right"></TableCell>
+                        <TableCell align="right">{listItems4}</TableCell>
                         <TableCell align="right"></TableCell>
                       </TableRow>
                     </TableHead>

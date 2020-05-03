@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Search from './Search';
-import ph from './picture/ph.png';
+import download from './picture/download.png';
 import knee from './picture/knee.jpeg';
 import shoulder from './picture/shoulder.png';
 import back from './picture/back.png';
@@ -21,11 +21,11 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   image: {
-    width: 1000,
+    width: 1200,
     height:500,
     position: 'relative',
     left: 130,
-    backgroundImage: `url(${ph})`,
+    backgroundImage: `url(${download})`,
     cover: 'no-repeat',
   },
   imagep: {

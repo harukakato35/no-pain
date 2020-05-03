@@ -54,19 +54,16 @@ const NavBar = () => {
                                 <TherapistLogin />
                             </TypoGraphy>
                         </ListItemText>
-                        {login.isPatient==true?
+                        
+                        {login.isLoginSuccess==true? 
                          <ListItemText inset>
                             <TypoGraphy color="inherit" variant="title">
-                                <Link to="/mypage" 　className={classes.mypage}>Mypage</Link>
-                            </TypoGraphy>
-                        　</ListItemText> 
-                        :
-                         <ListItemText inset>
-                            <TypoGraphy color="inherit" variant="title">
-                                <Link to="/therapist/mypage" 　className={classes.mypage}>Mypage</Link>
+                                <Link to={login.isPatient==true?"/mypage":"/therapist/mypage"}　className={classes.mypage}>Mypage</Link>
                             </TypoGraphy>
                         </ListItemText> 
-                           }   
+                        :
+                        <React.Fragment/>
+                        }
                     </ListItem >
                 </List>              
           </Toolbar>
@@ -76,3 +73,6 @@ const NavBar = () => {
 }
 
 export default NavBar;
+//続けて三項演算子を描く場合は{いらない
+//2つとも同じ処理をしていたからこうやって省略化:{login.isPatient==true?"/mypage":"/therapist/mypage"}
+
