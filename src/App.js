@@ -12,6 +12,7 @@ import Chat from './components/Chat';
 import Search from './components/Search';
 import SearchResult from './components/SearchResult';
 import Consultation from './components/Consultation';
+import PastConsultation from './components/PastConsultation';
 import ConsultationComplete from './components/ConsultationComplete';
 import Appointment from './components/Appointment';
 import ApptComplete from './components/ApptComplete';
@@ -31,6 +32,9 @@ import TherapistDetail from './components/TherapistDetail';
 import EditMyProfile from './components/EditMyProfile';
 import EditComplete from './components/EditComplete';
 import NoResult from './components/NoResult';
+import UpcomingAppt from './components/UpcomingAppt';
+import PastAppt from './components/PastAppt';
+import WaitingAdvice from './components/WaitingAdvice';
 
 const App = () => {
     return (
@@ -56,10 +60,22 @@ const App = () => {
               <Route exact path="/consultation" component={Consultation}/>
             </Switch>
             <Switch>
+              <Route exact path="/past/consultation" component={PastConsultation}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/waiting/advice" component={WaitingAdvice}/>
+            </Switch>
+            <Switch>
               <Route exact path="/consultation/complete" component={ConsultationComplete}/>
             </Switch>
             <Switch>
               <Route exact path="/appointment" component={Appointment}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/upcoming/appointment" component={UpcomingAppt}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/past/appointment" component={PastAppt}/>
             </Switch>
             <Switch>
               <Route exact path="/appointment/complete" component={ApptComplete}/>

@@ -12,6 +12,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import MypageMenu from './MypageMenu';
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,6 +28,12 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#FFAD90',
     color:'white',
   },
+  plus:{
+    height:600,
+  },
+  plus1:{
+    height:600,
+  }
 }));
 
 
@@ -112,79 +119,20 @@ function ButtonForReview(props){
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={7}>
-            <TableContainer component={Paper}>
+   <Grid container spacing={3}>
+   <Grid  item xs={2}> <MypageMenu/></Grid>
+         <Grid item xs={8}>
+            <TableContainer component={Paper} className={classes.plus1}>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>Your past consultation</TableCell>
-                        <TableCell align="right">title</TableCell>
-                        <TableCell align="right"></TableCell>
+                      <br></br>
+                      {listItems4}
                       </TableRow>
                     </TableHead>
-                    <TableBody>
-                        <TableRow>
-                          <TableCell component="th" scope="row">
-                          </TableCell>
-                          <TableCell component="th" scope="row">
-                            {listItems2}
-                          </TableCell>
-                        </TableRow>
-                    </TableBody>
                   </Table>
-                </TableContainer>
-              <ButtonForAdvice onClick={Ask}/>
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={7}>
-            <TableContainer component={Paper}>
-                  <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Answers from therapists</TableCell>
-                        <TableCell align="right">{listItems4}</TableCell>
-                        <TableCell align="right"></TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-
-                        <TableRow>
-                          <TableCell component="th" scope="row">
-                          </TableCell>
-                          <TableCell align="right"></TableCell>
-                          <TableCell align="right"></TableCell>
-                          <ButtonForApp onClick={Appointment}/>
-                          <ButtonForChat onClick={Message}/>
-                        </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-        </Grid>
-        <Grid item xs={7}>
-            <TableContainer component={Paper}>
-                  <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Your appointment</TableCell>
-                        <TableCell align="right">Time</TableCell>
-                        <TableCell align="right"></TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-
-                        <TableRow>
-                          <TableCell component="th" scope="row">
-                          </TableCell>
-                          <TableCell align="right">{listItems3}</TableCell>
-                          <TableCell align="right"></TableCell>
-                        </TableRow>
-                    
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-            <ButtonForReview onClick={Review}/>
+            </TableContainer>
+      
         </Grid>
       </Grid>
     </div>
