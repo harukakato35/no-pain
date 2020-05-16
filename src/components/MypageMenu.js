@@ -74,17 +74,6 @@ export default function MyPageMenu(props) {
                           </TableCell>
                         </TableRow>
                     </TableBody>
-                    <TableBody>
-                        <TableRow>
-                          <TableCell component="th" scope="row">
-                            <p>Your review</p>
-                            <ul>
-                              <li><Link to="/">Past reviews</Link></li>
-                              <li><Link to="/review">Write a review</Link></li>
-                            </ul>
-                          </TableCell>
-                        </TableRow>
-                    </TableBody>
                   </Table>
                 </TableContainer>
       </Grid>

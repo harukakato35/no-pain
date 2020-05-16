@@ -36,11 +36,12 @@ const useStyles = makeStyles({
 export default function QuestionDetail() {
 
     const classes = useStyles();
-      const search = useSelector(state => state.search.search);
-  const inquiry =  useSelector(state => state.inquiry.inquiry);
-  const profile =  useSelector(state => state.profile.profile);
-  const router =  useSelector(state => state.router.location.pathname);
-  const therapist = profile.filter(x => x.id === Number(router.substr(router.length -1,1)));
+    const search = useSelector(state => state.search.search);
+    const inquiry =  useSelector(state => state.inquiry.inquiry);
+    const profile =  useSelector(state => state.profile.profile);
+    const router =  useSelector(state => state.router.location.pathname);
+    const therapist = profile.filter(x => x.id === Number(router.substr(router.length -1,1)));
+    const login = useSelector(state => state.login);
     
   return (
       therapist.map((therapist)=>(
@@ -60,7 +61,15 @@ export default function QuestionDetail() {
                   {therapist.Location}
                 </Typography>  
               </CardContent>
-              <Link to="/login" className={classes.link}><Button renderAs="button"variant="contained" className={classes.button}>Sign in and make an appt</Button></Link>
+              {login.isLoginSuccess==false? 
+              <Link to="/login" className={classes.link}>
+                <Button renderAs="button"variant="contained" className={classes.button}>
+                 Sign in and make an appt
+                 </Button>
+              </Link>
+              :
+              <React.Fragment/>
+              }
             </Card>
         </React.Fragment>
         ))

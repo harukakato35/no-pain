@@ -38,7 +38,10 @@ const useStyles = makeStyles(theme => ({
   },
   h3:{
     borderBottom:"3px solid orange"
-  }
+  },
+  list:{
+    listStyle: "none",
+  },
 }));
 
 
@@ -47,37 +50,71 @@ export default function MyPage(props) {
 
     const classes = useStyles();
     const inquiry = useSelector(state => state.inquiry);
-
+    const answer = useSelector(state => state.inquiry.answer)
+    const dispatch = useDispatch(); 
+    
+    function ButtonForChat(props){
+      return (
+        <Button onClick={props.onClick} variant="contained" className={classes.button}>
+          Chat 
+        </Button>
+      );
+    }
     const listItems2 = inquiry.inquiry.map((inquiry)=>
       <li key={inquiry.id}>
        {inquiry.title}
       </li>
     );  
+    const  Message = () => {
+      dispatch({ type: "ADD_PATIENT_MESSAGE" }); //dispatchを実行することでReducerが実行される
+      dispatch(push('/chat'));
+    };
+    
+    const listItems4 = answer.map((answer)=>
+      <li key={answer.id}>
+       {answer.answer}
+      </li>
+    );
 
   return (
     <div className={classes.root}>
-   <Grid container spacing={3}>
-   <Grid  item xs={2}> <MypageMenu/></Grid>
-         <Grid item xs={8}>
-            <TableContainer component={Paper} className={classes.plus1}>
+      <Grid container spacing={3}>
+        <Grid  item xs={2}> <MypageMenu/></Grid>
+           <Grid item xs={8}>
+              <ListItem className={classes.h3}>
+                <ListItem>Your past consultation</ListItem>
+              </ListItem>
+              <TableContainer component={Paper} className={classes.plus1}>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                      <br></br>
-                        <ListItem className={classes.h3}>
-                          <ListItem>Your past consultation</ListItem>
-                        </ListItem>
-                           <br></br>
-                        {listItems2}
+                        <TableCell>Your question</TableCell>
+                         <TableCell align="center">Answer from therapists</TableCell>
                       </TableRow>
                     </TableHead>
-                  </Table>
-            </TableContainer>
-      
+                  <TableBody>
+                    <TableRow className={classes.list}>
+                      <TableCell align="left" >{listItems2}</TableCell>
+                      <TableCell align="center" >{listItems4}</TableCell>
+                       <ul className={classes.list}>
+                        <li>
+                          <ButtonForChat onClick={Message} />
+                        </li>
+                       </ul>
+                       <ul className={classes.list}>
+                        <li>
+                          <ButtonForChat onClick={Message}/>
+                        </li>
+                      </ul>
+                    </TableRow>
+                  </TableBody>
+                 </Table>
+              </TableContainer>
         </Grid>
       </Grid>
     </div>
   );
 }
+
 
 

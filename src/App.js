@@ -24,6 +24,7 @@ import TherapistProfile from './components/TherapistProfile';
 import TherapistMyprofile from './components/TherapistMyprofile';
 import ProfileComplete from './components/ProfileComplete';
 import Review from './components/Review';
+import PastReviews from './components/PastReviews';
 import ReviewComplete from './components/ReviewComplete';
 import KneeDoctors from './components/KneeDoctors';
 import BackDoctors from './components/BackDoctors';
@@ -82,6 +83,9 @@ const App = () => {
             </Switch>
             <Switch>
               <Route exact path="/review" component={Review}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/past/reviews" component={PastReviews}/>
             </Switch>
             <Switch>
               <Route exact path="/kneedoctors" component={KneeDoctors}/>

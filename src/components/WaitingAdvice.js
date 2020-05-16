@@ -16,6 +16,7 @@ import MypageMenu from './MypageMenu';
 import { ListItem, ListItemText } from "@material-ui/core";
 
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -37,7 +38,10 @@ const useStyles = makeStyles(theme => ({
   },
   h3:{
     borderBottom:"3px solid orange"
-  }
+  },
+  list:{
+    listStyle: "none",
+  },
 }));
 
 
@@ -55,29 +59,32 @@ export default function MyPage(props) {
 
   return (
     <div className={classes.root}>
-   <Grid container spacing={3}>
-   <Grid  item xs={2}> <MypageMenu/></Grid>
-         <Grid item xs={8}>
-            <TableContainer component={Paper} className={classes.plus1}>
+      <Grid container spacing={3}>
+        <Grid  item xs={2}> <MypageMenu/></Grid>
+           <Grid item xs={8}>
+              <ListItem className={classes.h3}>
+                <ListItem>Unanswered consultation</ListItem>
+              </ListItem>
+              <TableContainer component={Paper} className={classes.plus1}>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                      <br></br>
-                        <ListItem className={classes.h3}>
-                          <ListItem>Waiting for advice</ListItem>
-                        </ListItem>
-                           <br></br>
-                        {listItems2}
-                        
+                        <TableCell>Your question</TableCell>
+                         <TableCell align="center">Answer from therapists</TableCell>
                       </TableRow>
                     </TableHead>
-                  </Table>
-            </TableContainer>
-      
+                  <TableBody>
+                    <TableRow className={classes.list}>
+                      <TableCell align="left" >{listItems2}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                 </Table>
+              </TableContainer>
         </Grid>
       </Grid>
     </div>
   );
 }
+
 
 

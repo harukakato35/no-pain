@@ -36,6 +36,12 @@ const useStyles = makeStyles(theme => ({
   },
   h3:{
     borderBottom:"3px solid orange"
+  },
+  table: {
+    minWidth: 650,
+  },
+  list:{
+    listStyle: "none",
   }
 }));
 
@@ -45,33 +51,48 @@ export default function MyPage(props) {
 
     const classes = useStyles();
     const appointments = useSelector(state => state.appointments.appointments);
-
+      const profile = useSelector(state => state.profile.profile);
+      
     const listItems3 = appointments.map((appointments)=>
       <li key={appointments.id}>
        {appointments.time}
       </li>
     );
+    const listItems2 = profile.map((profile)=>(
+      <ul>
+        <Link to={`/therapist/detail/${profile.id}`} className={classes.list}>
+          <li>{profile.name}</li>
+        </Link> 
+      </ul>
+        ));
+    
 
   return (
     <div className={classes.root}>
-   <Grid container spacing={3}>
-   <Grid  item xs={2}> <MypageMenu/></Grid>
-         <Grid item xs={8}>
-            <TableContainer component={Paper} className={classes.plus1}>
+      <Grid container spacing={3}>
+        <Grid  item xs={2}> <MypageMenu/></Grid>
+           <Grid item xs={8}>
+              <ListItem className={classes.h3}>
+                <ListItem>Your upcoming appointment</ListItem>
+              </ListItem>
+          
+              <TableContainer component={Paper} className={classes.plus1}>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                      <br></br>
-                        <ListItem className={classes.h3}>
-                          <ListItem>Your upcoming appointment</ListItem>
-                        </ListItem>
-                           <br></br>
-                        {listItems3}
+                        <TableCell>Appointment time</TableCell>
+                         <TableCell align="center">Therapist Name</TableCell>
                       </TableRow>
                     </TableHead>
-                  </Table>
-            </TableContainer>
-      
+                  <TableBody>
+                    <TableRow className={classes.list}>
+                      <TableCell align="left" >{listItems3}</TableCell>
+                      <TableCell align="center" >{listItems2}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                 </Table>
+              </TableContainer>
+          
         </Grid>
       </Grid>
     </div>

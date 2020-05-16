@@ -52,38 +52,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function MyPage(props) {
     const classes = useStyles();
-    const appointments = useSelector(state => state.appointments.appointments);
+    const review = useSelector(state => state.review.review);
     const profile = useSelector(state => state.profile.profile);
-    const dispatch = useDispatch(); 
+
     
-    function ButtonForApp(props){
-      return (
-        <Button onClick={props.onClick} variant="contained" className={classes.button}>
-          Make an appt
-        </Button>
-      );
-    }
-
-function ButtonForReview(props){
-  return (
-    <Button onClick={props.onClick} variant="contained" className={classes.button}>
-      Review 
-    </Button>
-  );
-}
-
-    const  Appointment = () => {
-      dispatch(push('/appointment'));
-    };  
-
-    const  Review = () => {
-      dispatch({ type: "WRITE_A_REVIEW" }); //dispatchを実行することでReducerが実行される
-      dispatch(push('/review'));
-    };
+ 
     
-    const listItems3 = appointments.map((appointments)=>
-      <li key={appointments.id}>
-       {appointments.time} 
+    const listItems3 = review.map((review)=>
+      <li key={review.id}>
+       {review.review} 
       </li>
     );
     
@@ -103,7 +80,7 @@ function ButtonForReview(props){
         <Grid  item xs={2}> <MypageMenu/></Grid>
            <Grid item xs={8}>
               <ListItem className={classes.h3}>
-                <ListItem>Your past appointment</ListItem>
+                <ListItem>Reviews you made</ListItem>
               </ListItem>
               <TableContainer component={Paper} className={classes.plus1}>
                   <Table className={classes.table} aria-label="simple table">
@@ -116,31 +93,6 @@ function ButtonForReview(props){
                   <TableBody>
                     <TableRow className={classes.list}>
                       <TableCell align="left" >{listItems3}</TableCell>
-                      <TableCell align="center" >{listItems2}</TableCell>
-                    <TableCell align="right" >
-                       <ul className={classes.list}>
-                        <li>
-                          <ButtonForApp onClick={Appointment} />
-                        </li>
-                       </ul>
-                       <ul className={classes.list}>
-                        <li>
-                          <ButtonForApp onClick={Appointment}/>
-                        </li>
-                      </ul>
-                    </TableCell>
-                    <TableCell align="right" >
-                       <ul className={classes.list}>
-                        <li>
-                           <ButtonForReview onClick={Review}/>
-                        </li>
-                       </ul>
-                       <ul className={classes.list}>
-                        <li>
-                          <ButtonForReview onClick={Review}/>
-                        </li>
-                      </ul>
-                    </TableCell>
                     </TableRow>
                   </TableBody>
                  </Table>
