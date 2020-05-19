@@ -70,13 +70,14 @@ export default function MyPage(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid  item xs={2}> <MypageMenu/></Grid>
+        <Grid  item xs={2}> 
+          <MypageMenu/>
+        </Grid>
            <Grid item xs={8}>
+              <TableContainer component={Paper} className={classes.plus1}>
               <ListItem className={classes.h3}>
                 <ListItem>Your upcoming appointment</ListItem>
               </ListItem>
-          
-              <TableContainer component={Paper} className={classes.plus1}>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                       <TableRow>
@@ -92,7 +93,6 @@ export default function MyPage(props) {
                   </TableBody>
                  </Table>
               </TableContainer>
-          
         </Grid>
       </Grid>
     </div>

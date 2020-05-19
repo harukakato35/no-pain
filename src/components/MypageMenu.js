@@ -12,73 +12,144 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@material-ui/core/AppBar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import TypoGraphy from '@material-ui/core/Typography'
+import PatientLogin from './PatientLogin'
+import TherapistLogin from './TherapistLogin'
 
-
-const useStyles = makeStyles(theme => ({
+const drawerWidth = 240;
+const useStyles = makeStyles((theme) => ({
   root: {
+    display: 'flex',
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    height: 80,
+    backgroundColor:'#DDFFFF',
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  drawerContainer: {
+    overflow: 'auto',
+    paddingLeft: 10,
+  },
+  content: {
     flexGrow: 1,
+    padding: theme.spacing(3),
   },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
+
+  typography: {
+    color:'	#0000EE',
+    fontSize: 20,
+    textDecoration: 'none',
   },
-  button: {
-    backgroundColor: '#FFAD90',
-    color:'white',
+  mypage: {
+    color:'	#0000EE',
+    fontSize: 17,
+    textDecoration: 'none',
   },
-  plus:{
-    height:600,
-  },
-  plus1:{
-    height:600,
+  p:{
+    paddingLeft: 10,
   }
 }));
 
 
 
-export default function MyPageMenu(props) {
-    const classes = useStyles();
-
+export default function ClippedDrawer() {
+  const classes = useStyles();
+  const login = useSelector(state => state.login);
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-            <TableContainer component={Paper} className={classes.plus}>
-                  <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                       <TableCell align="left"><Link to="/mypage">Mypage Top</Link></TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        <TableRow>
-                          <TableCell component="th" scope="row">
-                            <p>Your appointment</p>
-                            <ul>
-                              <li><Link to="/upcoming/appointment">Upcoming Appointment</Link></li>
-                              <li><Link to="/past/appointment">Past Appointment</Link></li>
-                              <li><Link to="/appointment">Make a new appt</Link></li>
-                            </ul>
-                          </TableCell>
-                        </TableRow>
-                    </TableBody>
-                    <TableBody>
-                        <TableRow>
-                          <TableCell component="th" scope="row">
-                            <p>Your consultation</p>
-                            <ul>
-                              <li><Link to="/past/consultation">Past consultation</Link></li>
-                              <li><Link to="/waiting/advice">Waiting for advice</Link></li>
-                              <li><Link to="/consultation">New Consultation</Link></li>
-                            </ul>
-                          </TableCell>
-                        </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-      </Grid>
+      <CssBaseline />
+          <AppBar  className={classes.appBar}  position="fixed">
+              <Toolbar>
+                      <List component="nav">
+                          <ListItem component="div">
+                              <ListItemText inset>
+                                  <TypoGraphy variant="title">
+                                       <Link to="/"　className={classes.typography}>Home</Link>
+                                  </TypoGraphy>
+                              </ListItemText>
+                              <ListItemText inset>
+                                  <TypoGraphy  variant="title">
+                                      <PatientLogin />
+                             </TypoGraphy>
+                              </ListItemText>
+                              <ListItemText inset>
+                                  <TypoGraphy variant="title">
+                                      <TherapistLogin />
+                                  </TypoGraphy>
+                              </ListItemText>
+                              
+                              {login.isLoginSuccess==true? 
+                               <ListItemText inset>
+                                  <TypoGraphy color="inherit" variant="title">
+                                      <Link to={login.isPatient==true?"/mypage":"/therapist/mypage"}　className={classes.mypage}>Mypage</Link>
+                                  </TypoGraphy>
+                              </ListItemText> 
+                              :
+                              <React.Fragment/>
+                              }
+                          </ListItem >
+                      </List>              
+                </Toolbar>
+              </AppBar>
+      <Drawer
+        className={classes.drawer}
+        variant="permanent"
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <Toolbar />
+        <div className={classes.drawerContainer}>
+          <Link to="/mypage"><br></br><br></br>Mypage Top</Link>
+          <List>
+          <p className={classes.p}>Your appointment</p>
+              <ListItem button>
+                <ListItemIcon>
+                  <ul>
+                     <li><Link to="/upcoming/appointment">Upcoming Appointment</Link></li>
+                     <li><Link to="/past/appointment">Past Appointment</Link></li>
+                     <li><Link to="/appointment">Make a new appt</Link></li>
+                 </ul>                
+                </ListItemIcon>
+              </ListItem>
+          </List>
+          <Divider />
+          <List>
+           <p className={classes.p}>Your consultation</p>
+              <ListItem button>
+                <ListItemIcon>
+                  <ul>
+                   <li><Link to="/past/consultation">Past consultation</Link></li>
+                   <li><Link to="/waiting/advice">Waiting for advice</Link></li>
+                   <li><Link to="/consultation">New Consultation</Link></li>
+                 </ul>                
+                </ListItemIcon>
+                <ListItemText/>
+              </ListItem>
+          </List>
+        </div>
+      </Drawer>
+      <main className={classes.content}>
+        <Toolbar />
+      </main>
     </div>
   );
 }
-
-

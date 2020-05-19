@@ -79,10 +79,10 @@ export default function MyPage(props) {
       <Grid container spacing={3}>
         <Grid  item xs={2}> <MypageMenu/></Grid>
            <Grid item xs={8}>
-              <ListItem className={classes.h3}>
-                <ListItem>Reviews you made</ListItem>
-              </ListItem>
               <TableContainer component={Paper} className={classes.plus1}>
+                  <ListItem className={classes.h3}>
+                    <ListItem>Reviews you made</ListItem>
+                  </ListItem>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                       <TableRow>

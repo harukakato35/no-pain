@@ -10,11 +10,43 @@ import React, { useState, Component } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addInquiry } from '../modules/QuestionDetail';
 import { push } from 'connected-react-router'
+import { makeStyles } from '@material-ui/core/styles';
+import TableContainer from '@material-ui/core/TableContainer';
+import Paper from '@material-ui/core/Paper';
 
-
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  button: {
+    backgroundColor: '#FFAD90',
+    color:'white',
+  },
+  plus1:{
+    margin: 10,
+    padding: 30,
+    height:350,
+  },
+  p:{
+    fontSize: 20,
+    color:"#FF773E",
+  },
+  button:{
+    backgroundColor:"#FFAD90",
+    color: "white",
+    paddingLeft: 30,
+    paddingRight: 30,
+  }
+}));
 
 export default function Consultation(props) {
    const dispatch = useDispatch(); 
+   const classes = useStyles();
   // const [inquiry, setInquiry] = useState("");
   // const [title, setTitle] = useState("");
    
@@ -25,42 +57,49 @@ export default function Consultation(props) {
     }
     
    return (
-      <form>
-        <React.Fragment>
-          <Typography variant="h6" gutterBottom>
-            Whad do you want to ask?
-          </Typography>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                id="Title"
-                name="Title"
-                label="Title"
-                
-                fullWidth
-                autoComplete="fname"
-              />
-            </Grid>
-            <Grid item xs={12} sm={10}>
-              <TextField
-                required
-                id="Inquiry"
-                name="Inquiry"
-                label="Inquiry"
-
-                fullWidth
-                autoComplete="lname"
-                multiline
-                rows="4"
-                variant="outlined"
-                
-              />
-            </Grid>
-          </Grid>
-          <Button variant="contained" onClick= {handleAdd} color="primary">
-            Next
-          </Button>
+    <form>
+      <React.Fragment>
+         <Grid container spacing={3}>
+           <Grid item xs={7}>
+             <TableContainer component={Paper} className={classes.plus1}>
+              <Typography variant="h6" gutterBottom className={classes.p}>
+                Tell us what's bothering you...
+              </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    id="Title"
+                    name="Title"
+                    label="Title"
+                    
+                    fullWidth
+                    autoComplete="fname"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={10}>
+                  <TextField
+                    required
+                    id="Inquiry"
+                    name="Inquiry"
+                    label="Inquiry"
+    
+                    fullWidth
+                    autoComplete="lname"
+                    multiline
+                    rows="4"
+                    variant="outlined"
+                    
+                  />
+                </Grid>
+              </Grid>
+              <br></br>
+              <Button variant="contained" onClick= {handleAdd}  className={classes.button}>
+                Next
+              </Button>
+            </TableContainer>
+           </Grid>
+         </Grid>
         </React.Fragment>
       </form>
     );

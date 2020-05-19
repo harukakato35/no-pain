@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Home from './Home';
-
+import NavBar from './NavBar';
 
 
 const useStyles = makeStyles(theme => ({
