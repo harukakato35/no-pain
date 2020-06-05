@@ -9,6 +9,11 @@ import { push } from 'connected-react-router'
 import Button from '@material-ui/core/Button';
 import { useState } from "react";
 import {Link} from 'react-router-dom';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableRow from '@material-ui/core/TableRow';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,12 +24,28 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-  form:{
-  width: "15%",
+  form1:{
+  padding: 10,
+  width: "60%",
+  },
+  form2:{
+  padding: 30,
+  width: "57%",
   },
   link:{
   textDecoration: 'none',
-  }
+  },
+  label:{
+    marginLeft: 30,
+    marginTop: 20,
+  },
+  button:{
+      backgroundColor: "#FF99CC",
+      color: "white",
+      marginTop: 10,
+      marginLeft: 800,
+      padding: 15,
+  },
 }));
 
 export default function CenteredGrid() {
@@ -52,12 +73,12 @@ export default function CenteredGrid() {
 
     
  return (
-    <form onSubmit={printValues}>
-      <label>
-        Name:
+    <form onSubmit={printValues}  className={classes.label}>
+      <label >
+        Name
          <br /><br />
         <input
-          className={classes.form}
+          className={classes.form1}
           value={form.name}
           name="name"
           onChange={updateField}
@@ -65,10 +86,10 @@ export default function CenteredGrid() {
       </label>
       <br /><br />
       <label>
-        Workplace:
+        Workplace
          <br /><br />
         <input
-          className={classes.form}
+          className={classes.form1}
           value={form.workplace}
           name="workplace"
           type="workplace"
@@ -77,10 +98,10 @@ export default function CenteredGrid() {
       </label>
       <br /><br />
       <label>
-        Location:
+        Location
          <br /><br />
         <input
-          className={classes.form}
+          className={classes.form1}
           value={form.location}
           name="location"
           onChange={updateField}
@@ -88,10 +109,10 @@ export default function CenteredGrid() {
       </label>
       <br /><br />
       <label>
-        Type:
+        Type
         <br /><br />
         <input
-          className={classes.form}
+          className={classes.form1}
           value={form.type}
           name="type"
           onChange={updateField}
@@ -99,10 +120,10 @@ export default function CenteredGrid() {
       </label>
       <br /><br />
       <label>
-        Speciality:
+        Speciality
          <br /><br />
         <input
-          className={classes.form}
+          className={classes.form2}
           value={form.speciality}
           name="speciality"
           onChange={updateField}
@@ -111,6 +132,7 @@ export default function CenteredGrid() {
      <br /><br />
     <Link to="/edit/complete" className={classes.link}><Button renderAs="button"variant="contained" className={classes.button}>Edit</Button></Link>
     </form>
+
   );
 }
 

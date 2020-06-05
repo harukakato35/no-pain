@@ -12,8 +12,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import MypageMenu from './MypageMenu';
+import TherapistMypageMenu from './TherapistMypageMenu';
 import { ListItem, ListItemText } from "@material-ui/core";
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,110 +39,73 @@ const useStyles = makeStyles(theme => ({
   h3:{
     borderBottom:"3px solid orange"
   },
-  table: {
-    minWidth: 650,
-  },
   list:{
-    listStyle: "none",
-  },
-  button: {
-    backgroundColor: '#FFAD90',
-    color:'white',
     listStyle: "none",
   },
 }));
 
+
+
 export default function MyPage(props) {
+
     const classes = useStyles();
-    const appointments = useSelector(state => state.appointments.appointments);
-    const profile = useSelector(state => state.profile.profile);
+    const inquiry = useSelector(state => state.inquiry);
+    const answer = useSelector(state => state.inquiry.answer)
     const dispatch = useDispatch(); 
     
-    function ButtonForApp(props){
+    function ButtonForChat(props){
       return (
         <Button onClick={props.onClick} variant="contained" className={classes.button}>
-          Make an appt
+          Chat 
         </Button>
       );
     }
-
-function ButtonForReview(props){
-  return (
-    <Button onClick={props.onClick} variant="contained" className={classes.button}>
-      Review 
-    </Button>
-  );
-}
-
-    const  Appointment = () => {
-      dispatch(push('/appointment'));
-    };  
-
-    const  Review = () => {
-      dispatch({ type: "WRITE_A_REVIEW" }); //dispatchを実行することでReducerが実行される
-      dispatch(push('/review'));
+    const listItems2 = inquiry.inquiry.map((inquiry)=>
+      <li key={inquiry.id}>
+       {inquiry.title}
+      </li>
+    );  
+    const  Message = () => {
+      dispatch({ type: "ADD_PATIENT_MESSAGE" }); //dispatchを実行することでReducerが実行される
+      dispatch(push('/chat'));
     };
     
-    const listItems3 = appointments.map((appointments)=>
-      <li key={appointments.id}>
-       {appointments.time} 
+    const listItems4 = answer.map((answer)=>
+      <li key={answer.id}>
+       {answer.answer}
       </li>
     );
-    
-    const listItems2 = profile.map((profile)=>(
-      <ul>
-        <Link to={`/therapist/detail/${profile.id}`} className={classes.list}>
-          <li>
-            {profile.name}
-          </li>
-        </Link> 
-      </ul>
-        ));
-        
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid  item xs={2}> <MypageMenu/></Grid>
+        <Grid  item xs={2}> <TherapistMypageMenu/></Grid>
            <Grid item xs={8}>
               <TableContainer component={Paper} className={classes.plus1}>
-                <ListItem className={classes.h3}>
-                  <ListItem>Your past appointment</ListItem>
-                </ListItem>
+                  <ListItem className={classes.h3}>
+                    <ListItem>Your past answer</ListItem>
+                  </ListItem>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>Appointment time</TableCell>
-                         <TableCell align="center">Therapist Name</TableCell>
+                        <TableCell>Question</TableCell>
+                         <TableCell align="center">Answers</TableCell>
                       </TableRow>
                     </TableHead>
                   <TableBody>
                     <TableRow className={classes.list}>
-                      <TableCell align="left" >{listItems3}</TableCell>
-                      <TableCell align="center" >{listItems2}</TableCell>
-                    <TableCell align="right" >
+                      <TableCell align="left" >{listItems2}</TableCell>
+                      <TableCell align="center" >{listItems4}</TableCell>
                        <ul className={classes.list}>
                         <li>
-                          <ButtonForApp onClick={Appointment} />
+                          <ButtonForChat onClick={Message} />
                         </li>
                        </ul>
                        <ul className={classes.list}>
                         <li>
-                          <ButtonForApp onClick={Appointment}/>
+                          <ButtonForChat onClick={Message}/>
                         </li>
                       </ul>
-                    </TableCell>
-                    <TableCell align="right" >
-                       <ul className={classes.list}>
-                        <li>
-                           <ButtonForReview onClick={Review}/>
-                        </li>
-                       </ul>
-                       <ul className={classes.list}>
-                        <li>
-                          <ButtonForReview onClick={Review}/>
-                        </li>
-                      </ul>
-                    </TableCell>
                     </TableRow>
                   </TableBody>
                  </Table>
@@ -150,5 +115,6 @@ function ButtonForReview(props){
     </div>
   );
 }
+
 
 

@@ -29,13 +29,19 @@ import ReviewComplete from './components/ReviewComplete';
 import KneeDoctors from './components/KneeDoctors';
 import BackDoctors from './components/BackDoctors';
 import ShoulderDoctors from './components/ShoulderDoctors';
-import TherapistDetail from './components/TherapistDetail';
 import EditMyProfile from './components/EditMyProfile';
 import EditComplete from './components/EditComplete';
 import NoResult from './components/NoResult';
 import UpcomingAppt from './components/UpcomingAppt';
+import TUpcomingAppt from './components/TUpcomingAppt';
+import TPastAppt from './components/TPastAppt';
 import PastAppt from './components/PastAppt';
 import WaitingAdvice from './components/WaitingAdvice';
+import AnsweredQuestions from './components/AnsweredQuestions';
+import TherapistAdvice from './components/TherapistAdvice';
+import GiveAdvice from './components/GiveAdvice';
+import TherapistAdviceComplete from './components/TherapistAdviceComplete';
+
 
 const App = () => {
     return (
@@ -74,6 +80,12 @@ const App = () => {
             </Switch>
             <Switch>
               <Route exact path="/upcoming/appointment" component={UpcomingAppt}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/therapist/upcoming/appointment" component={TUpcomingAppt}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/therapist/past/appointment" component={TPastAppt}/>
             </Switch>
             <Switch>
               <Route exact path="/past/appointment" component={PastAppt}/>
@@ -121,7 +133,7 @@ const App = () => {
               <Route exact path="/question/detail/:id" component={QuestionDetail}/>
             </Switch>
             <Switch>
-              <Route exact path="/therapist/detail/:id" component={TherapistDetail}/>
+              <Route exact path="/give/advice/:id" component={GiveAdvice}/>
             </Switch>
             <Switch>
               <Route exact path="/therapist/Signup" component={SignUp}/>
@@ -142,10 +154,16 @@ const App = () => {
               <Route exact path="/profile/complete" component={ProfileComplete}/>
             </Switch>
             <Switch>
-              <Route exact path="/therapist/advice" component={QuestionDetail}/>
+              <Route exact path="/therapist/advice" component={TherapistAdvice}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/therapist/answered/questions" component={AnsweredQuestions}/>
             </Switch>
             <Switch>
               <Route exact path="/therapist/advice/complete" component={AdviceComplete}/>
+            </Switch>
+            <Switch>
+              <Route exact path="/advice/complete" component={TherapistAdviceComplete}/>
             </Switch>
             <Switch>
               <Route exact path="/" component={Home}/>

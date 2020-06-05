@@ -10,6 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import { addAnswer } from '../modules/QuestionDetail';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+import TableContainer from '@material-ui/core/TableContainer';
+import { ListItem, ListItemText } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -26,6 +29,9 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  h3:{
+    borderBottom:"3px solid orange"
+  },
 });
 
 export default function QuestionDetail() {
@@ -37,7 +43,7 @@ export default function QuestionDetail() {
     const router =  useSelector(state => state.router.location.pathname);
     const patient = inquiry.inquiry.filter(x => x.id === Number(router.substr(router.length -1,1)));
 
-    console.log(router.length -1);
+    // console.log(router.length -1);
   
     const handleAdd = (e) => {
         e.preventDefault();
@@ -53,43 +59,53 @@ export default function QuestionDetail() {
 
   return (
     <React.Fragment>
-      {patient.map((patient)=>(
-  
-            <Card className={classes.root}>
-              <CardContent>
-                <Typography className={classes.title} gutterBottom>
-                Title:<br></br>
-                 {patient.title}
-                </Typography>
-                <Typography variant="body2" component="p">
-                Inquiry:<br></br>
-                  {patient.inquiry}
-                </Typography>
-              </CardContent>
-            </Card>
-     ))}
-    {listItems}
-    {login.isLoginSuccess?
-            <Grid item xs={12} sm={10}>
-              <TextField
-                required
-                id="Answer"
-                name="Answer"
-                label="Answer"
-
-                fullWidth
-                autoComplete="lname"
-                multiline
-                rows="4"
-                variant="outlined"
-              />
-          <Button variant="contained" onClick= {handleAdd} color="primary">
-            Answer
-          </Button>
-            </Grid>
-             :
-            <React.Fragment />
-    }
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+               <Grid item xs={8}>
+                <TableContainer component={Paper} className={classes.plus1}>
+                  <ListItem className={classes.h3}>
+                    <ListItem>You can check what kind of treatment this person chose</ListItem>
+                  </ListItem>
+                  {patient.map((patient)=>(
+                        <Card className={classes.root}>
+                          <CardContent>
+                            <Typography className={classes.title} gutterBottom>
+                            Title:<br></br>
+                             {patient.title}
+                            </Typography>
+                            <Typography variant="body2" component="p">
+                            Inquiry:<br></br>
+                              {patient.inquiry}
+                            </Typography>
+                          </CardContent>
+                        </Card>
+                         ))}             
+                </TableContainer>
+          　　　</Grid>
+     　　　　 </Grid>
+    　　　</div>
+                {listItems}
+                {login.isPatient==false?
+                        <Grid item xs={12} sm={10}>
+                          <TextField
+                            required
+                            id="Answer"
+                            name="Answer"
+                            label="Answer"
+            
+                            fullWidth
+                            autoComplete="lname"
+                            multiline
+                            rows="4"
+                            variant="outlined"
+                          />
+                      <Button variant="contained" onClick= {handleAdd} color="primary">
+                        Answer
+                      </Button>
+                        </Grid>
+                         :
+                        <React.Fragment />
+                }
     </React.Fragment>
  );
 }

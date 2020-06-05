@@ -13,7 +13,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import MypageMenu from './MypageMenu';
-
+import { ListItem, ListItemText } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,106 +33,46 @@ const useStyles = makeStyles(theme => ({
   },
   plus1:{
     height:600,
-  }
+  },
+  h3:{
+    borderBottom:"3px solid orange"
+  },
 }));
 
 
 
 export default function MyPage(props) {
-function ButtonForApp(props){
-  return (
-    <Button onClick={props.onClick} variant="contained" className={classes.button}>
-      Make an appt
-    </Button>
-  );
-}
-
-function ButtonForChat(props){
-  return (
-    <Button onClick={props.onClick} variant="contained" className={classes.button}>
-      Chat with this Therapist
-    </Button>
-  );
-}
-
-function ButtonForAdvice(props){
-  return (
-    <Button onClick={props.onClick} variant="contained" className={classes.button}>
-      Ask for advice
-    </Button>
-  );
-}
-
-function ButtonForReview(props){
-  return (
-    <Button onClick={props.onClick} variant="contained" className={classes.button}>
-      Review this therapist
-    </Button>
-  );
-}
+  
     const classes = useStyles();
-    const mypage = useSelector(state => state.mypage); //global stateを呼び出すため,Dev toolをみて決めてる
-    const dispatch = useDispatch();　//Login.jsのreducerを使うため
-    const title = useSelector(state => state.title);
-    const answer = useSelector(state => state.inquiry.answer)
     const appointments = useSelector(state => state.appointments.appointments);
-    const chat = useSelector(state => state.message);
-    const inquiry = useSelector(state => state.inquiry);
-
     
-    const  Ask = () => {
-      dispatch(push('/consultation'));
-    };
-    
-
-    const  Appointment = () => {
-      dispatch(push('/appointment'));
-    };
-    
-    const  Message = () => {
-      dispatch({ type: "ADD_PATIENT_MESSAGE" }); //dispatchを実行することでReducerが実行される
-      dispatch(push('/chat'));
-    };
-    
-    const  Review = () => {
-      dispatch({ type: "WRITE_A_REVIEW" }); //dispatchを実行することでReducerが実行される
-      dispatch(push('/review'));
-    };
-    
-    const listItems2 = inquiry.inquiry.map((inquiry)=>
-      <li key={inquiry.id}>
-       {inquiry.title}
-      </li>
-    );    
-
     const listItems3 = appointments.map((appointments)=>
       <li key={appointments.id}>
        {appointments.time}
       </li>
     );
 
-    const listItems4 = answer.map((answer)=>
-      <li key={answer.id}>
-       {answer.answer}
-      </li>
-    );
-
   return (
     <div className={classes.root}>
-   <Grid container spacing={3}>
-   <Grid  item xs={2}> <MypageMenu/></Grid>
+      <Grid container spacing={3}>
+        <Grid  item xs={2}> 
+          <MypageMenu/>
+        </Grid>
          <Grid item xs={8}>
             <TableContainer component={Paper} className={classes.plus1}>
+                <ListItem className={classes.h3}>
+                  <ListItem>Your upcoming appointment</ListItem>
+                </ListItem>
                   <Table className={classes.table} aria-label="simple table">
                     <TableHead>
-                      <TableRow>
-                      <br></br>
-                      {listItems4}
-                      </TableRow>
                     </TableHead>
-                  </Table>
+                  <TableBody>
+                    <TableRow className={classes.list}>
+                      <TableCell align="left" >{listItems3}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                 </Table>
             </TableContainer>
-      
         </Grid>
       </Grid>
     </div>

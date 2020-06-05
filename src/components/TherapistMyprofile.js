@@ -12,10 +12,21 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+  },
+  root1: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
   },
   paper: {
     padding: theme.spacing(2),
@@ -25,6 +36,9 @@ const useStyles = makeStyles(theme => ({
   button: {
     backgroundColor: '#FFAD90',
     color:'white',
+    marginTop: 10,
+    marginLeft: 750,
+    padding: 10,
   },
   link:{
     textDecoration: 'none',
@@ -35,56 +49,72 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
- function TherapistMyprofile (){
+export default function TherapistMyprofile (){
       const classes = useStyles();
       const myprofile = useSelector(state => state.myprofile.myprofile); 
 
-
       return (
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-      
-        <Grid item xs={7}>
-            <TableContainer component={Paper}>
-                  <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Question Lists</TableCell>
-                        <TableCell align="right">Title</TableCell>
-                        <TableCell align="right">相談日時</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        <TableRow>
-                          <TableCell component="th" scope="row">
-                          </TableCell>
-                          <TableCell align="left"  className={classes.list}>
-                              <li>Name</li>
-                              <li>Workplace</li>
-                              <li>Location</li>
-                              <li>Type</li>
-                              <li>Special</li>
-                          </TableCell>
-                          <TableCell align="right" className={classes.list}>
-                              <li>{myprofile.name}</li>
-                              <li>{myprofile.Workplace}</li>
-                              <li>{myprofile.Location}</li>
-                              <li>{myprofile.Type}</li>
-                              <li>{myprofile.Special}</li>
-                          </TableCell>
- 
-                        </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-                <Link to="/edit/profile" className={classes.link}><Button renderAs="button"variant="contained" className={classes.button}>Edit</Button></Link>
-        </Grid>
-        </Grid>
-
-      </div>
-          
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+            <Grid item xs={7}>
+                <TableContainer component={Paper}>
+                      <Table className={classes.table} aria-label="simple table">
+                        <TableBody>
+                            <TableRow>
+                              <TableCell component="th" scope="row">
+                              </TableCell>
+                              
+                              <TableCell align="left"  className={classes.list}>
+                                <List component="nav" className={classes.root1} aria-label="mailbox folders">
+                                  <ListItem >
+                                   Name
+                                  </ListItem>
+                                  <Divider />
+                                  <ListItem  divider>
+                                    Workplace
+                                  </ListItem>
+                                  <ListItem >
+                                   Location
+                                  </ListItem>
+                                  <Divider light />
+                                  <ListItem >
+                                    Type
+                                  </ListItem>
+                                  <Divider light />
+                                  <ListItem >
+                                   Special
+                                  </ListItem>
+                                </List>
+                              </TableCell>
+                              <TableCell align="right" className={classes.list}>
+                                  <List component="nav" className={classes.root1} aria-label="mailbox folders">
+                                    <ListItem >
+                                      {myprofile.name}
+                                    </ListItem>
+                                    <Divider />
+                                    <ListItem  divider>
+                                       {myprofile.Workplace}
+                                    </ListItem>
+                                    <ListItem >
+                                     {myprofile.Location}
+                                    </ListItem>
+                                    <Divider light />
+                                    <ListItem >
+                                      {myprofile.Type}
+                                    </ListItem>
+                                    <Divider light />
+                                    <ListItem >
+                                      {myprofile.Special}
+                                    </ListItem>
+                                  </List>
+                              </TableCell>
+                            </TableRow>
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                    <Link to="/edit/profile" className={classes.link}><Button renderAs="button"variant="contained" className={classes.button}>Edit</Button></Link>
+             </Grid>
+            </Grid>
+          </div>
           );
-     
-     
  }
- export default TherapistMyprofile;

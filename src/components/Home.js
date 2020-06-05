@@ -14,6 +14,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import {Link} from 'react-router-dom';
+import Footer from './Footer';
 
 
 const useStyles = makeStyles(theme => ({
@@ -199,13 +200,8 @@ export default function Home() {
                </Link>
               </Card>
             </Grid> 
-            <Grid item xs={10}>
-              <Paper className={classes.paper2}>Find a similar symptoms with other people!</Paper>
-            </Grid>
-             <Grid item xs={12}>
-              <Search className={classes.search}/>
-            </Grid> 
       </Grid> 
+                  <Footer/>
     </div>
  </React.Fragment>
   );

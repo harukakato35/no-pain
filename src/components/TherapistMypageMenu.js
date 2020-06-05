@@ -116,37 +116,48 @@ export default function ClippedDrawer() {
         }}
       >
         <Toolbar />
-        <div className={classes.drawerContainer}>
-          <Link to="/mypage"><br></br><br></br>Mypage Top</Link>
-          <List>
-          <p className={classes.p}>Your appointment</p>
-              <ListItem button>
-                <ListItemIcon>
-                  <ul>
-                     <li><Link to="/upcoming/appointment">Upcoming Appointment</Link></li>
-                     <li><Link to="/past/appointment">Past Appointment</Link></li>
-                     <li><Link to="/appointment">Make a new appt</Link></li>
-                 </ul>                
-                </ListItemIcon>
-              </ListItem>
-          </List>
-          <Divider />
-          <List>
-           <p className={classes.p}>Your consultation</p>
-              <ListItem button>
-                <ListItemIcon>
-                  <ul>
-                   <li><Link to="/past/consultation">Past consultation</Link></li>
-                   <li><Link to="/waiting/advice">Waiting for advice</Link></li>
-                   <li><Link to="/consultation">New Consultation</Link></li>
-                 </ul>                
-                </ListItemIcon>
-                <ListItemText/>
-              </ListItem>
-          </List>
-        </div>
-      </Drawer>
-      <main className={classes.content}>
+                <div className={classes.drawerContainer}>
+                  <Link to="/therapist/mypage"><br></br><br></br>Mypage Top</Link>
+                  <List>
+                  <p className={classes.p}>Edit your profile</p>
+                      <ListItem button>
+                        <ListItemIcon>
+                          <ul>
+                             <li><Link to="/therapist/myprofile">Show/Edit profile</Link></li>
+                             <li><Link to="/therapist/profile">New profile</Link></li>
+                         </ul>                
+                        </ListItemIcon>
+                      </ListItem>
+                  </List>
+                  <Divider />
+                  <List>
+                  <p className={classes.p}>Your appointment</p>
+                      <ListItem button>
+                        <ListItemIcon>
+                          <ul>
+                             <li><Link to="/therapist/upcoming/appointment">Upcoming Appointment</Link></li>
+                             <li><Link to="/therapist/past/appointment">Past Appointment</Link></li>
+                         </ul>                
+                        </ListItemIcon>
+                      </ListItem>
+                  </List>
+                  <Divider />
+                  <List>
+                   <p className={classes.p}>Advice</p>
+                      <ListItem button>
+                        <ListItemIcon>
+                          <ul>
+                           <li><Link to="/therapist/advice">Give advice</Link></li>
+                           <li><Link to="/therapist/answered/questions">Answered</Link></li>
+                         </ul>                
+                        </ListItemIcon>
+                        <ListItemText/>
+                      </ListItem>
+                  </List>
+                 <Divider />
+                </div>
+             </Drawer>
+           <main className={classes.content}>
         <Toolbar />
       </main>
     </div>

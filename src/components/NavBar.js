@@ -10,6 +10,13 @@ import {Link} from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { useSelector } from 'react-redux';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
+import { fade} from '@material-ui/core/styles';
+import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
+import Search from './Search';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,6 +35,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: 17,
     textDecoration: 'none',
   },
+  search:{
+      marginLeft: 500,
+  }
 }));
 
 const NavBar = () => {
@@ -47,14 +57,13 @@ const NavBar = () => {
                         <ListItemText inset>
                             <TypoGraphy  variant="title">
                                 <PatientLogin />
-                       </TypoGraphy>
+                            </TypoGraphy>
                         </ListItemText>
                         <ListItemText inset>
                             <TypoGraphy variant="title">
                                 <TherapistLogin />
                             </TypoGraphy>
                         </ListItemText>
-                        
                         {login.isLoginSuccess==true? 
                          <ListItemText inset>
                             <TypoGraphy color="inherit" variant="title">
@@ -64,6 +73,9 @@ const NavBar = () => {
                         :
                         <React.Fragment/>
                         }
+                        <ListItemText className={classes.search}>
+                            <Search />
+                        </ListItemText>
                     </ListItem >
                 </List>              
           </Toolbar>

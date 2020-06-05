@@ -24,6 +24,20 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  form1:{
+  width: "40%",
+  },
+  line:{
+    marginTop:20,
+    marginLeft: 20,
+  },
+  button:{
+      backgroundColor: "#FF99CC",
+      color: "white",
+      marginTop: 10,
+      marginLeft: 6,
+      padding: 15,
+  },
 }));
 
 export default function CenteredGrid() {
@@ -45,27 +59,28 @@ export default function CenteredGrid() {
 
     
   return (
-      <form>
+      <form >
         <React.Fragment>
-        <br></br>
-        <form  noValidate autoComplete="off">
-          Name :<br></br><TextField id="Name" label="Type here" variant="outlined" />
+        <div  className={classes.line}>
+        <form  noValidate autoComplete="off" >
+          Name <br></br><TextField id="Name" label="Type here" variant="outlined" className={classes.form1}/>
+        </form><br></br>
+        <form noValidate autoComplete="off" >
+          Workplace <br></br><TextField id="Workplace" label="Type here" variant="outlined"className={classes.form1} />
+        </form><br></br>
+        <form  noValidate autoComplete="off" >
+          Location <br></br><TextField id="Location" label="Type here" variant="outlined" className={classes.form1} />
+        </form><br></br>
+        <form noValidate autoComplete="off"  >
+          Type <br></br><TextField id="Type" label="Type here" variant="outlined" className={classes.form1} />
         </form><br></br>
         <form noValidate autoComplete="off">
-          Workplace :<br></br><TextField id="Workplace" label="Type here" variant="outlined" />
+         Special <br></br><TextField id="Special" label="Type here" variant="outlined"  className={classes.form1}/>
         </form><br></br>
-        <form  noValidate autoComplete="off">
-          Location :<br></br><TextField id="Location" label="Type here" variant="outlined" />
-        </form><br></br>
-        <form noValidate autoComplete="off">
-          Type :<br></br><TextField id="Type" label="Type here" variant="outlined" />
-        </form><br></br>
-        <form noValidate autoComplete="off">
-         Special :<br></br><TextField id="Special" label="Type here" variant="outlined" />
-        </form><br></br>
-          <Button variant="contained" onClick= {handleAdd} color="primary">
+          <Button variant="contained" onClick= {handleAdd} color="primary"  className={classes.button}>
             Submit
           </Button>
+          </div>
         </React.Fragment>
       </form>
   );
